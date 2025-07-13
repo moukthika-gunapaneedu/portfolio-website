@@ -184,7 +184,7 @@
         </h2>
         <hr class="border-t border-gray-300 mb-8">
         <div class="space-y-6 text-[1.05rem] text-gray-800 leading-8 text-justify" style="font-family: 'Merriweather', serif;">
-          <p>What I bring isn’t just technical fluency. It’s the mindset behind the code. I bring structure to ambiguity. I love transforming scattered information into insights and designing solutions that don’t just work, but make sense.</p>
+          <p>What I bring isn’t just technical fluency. It’s the mindset behind the code. I bring structure to ambiguity. I love converting scattered information into insights and designing solutions that don’t just work, but make sense.</p>
           <p>I’m deeply collaborative. I ask good questions, explain things clearly, and believe the best work happens when technical minds and domain experts think together. Underneath all the tools I use is a commitment to curiosity and usefulness.</p>
           <p>I take ownership, not just of tasks, but of outcomes. I care about what happens after a model goes live, about whether a dashboard actually helps someone decide, and about how well the solution fits the people who’ll use it.</p>
           <p>That’s what I bring to the table. Every time.</p>
@@ -240,11 +240,11 @@
             <div class="flex items-center justify-start min-w-[1600px] gap-10 px-10">
 
               <!-- Timeline Item -->
-              <div class="flex flex-col items-center text-center group">
+              <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('ICCW')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
                   <img src="/assets/iccw.png" alt="ICCW" class="h-12 object-contain" />
                 </div>
-                <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">AI Project Intern</div>
+                <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Project Intern</div>
                 <div class="text-sm italic text-gray-700">ICCW</div>
               </div>
 
@@ -254,7 +254,7 @@
               </div>
 
               <!-- Timeline Item -->
-              <div class="flex flex-col items-center text-center group">
+              <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('MTE')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
                   <img src="/assets/mte.png" alt="MTE" class="h-10 object-contain" />
                 </div>
@@ -268,7 +268,7 @@
               </div>
 
               <!-- Timeline Item -->
-              <div class="flex flex-col items-center text-center group">
+              <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('SSS')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
                   <img src="/assets/solar.png" alt="Solar Secure" class="h-12 object-contain" />
                 </div>
@@ -282,7 +282,7 @@
               </div>
 
               <!-- Timeline Item -->
-              <div class="flex flex-col items-center text-center group">
+              <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('ZENOYA')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
                   <img src="/assets/zenoya.png" alt="Zenoya" class="h-10 object-contain" />
                 </div>
@@ -296,7 +296,7 @@
               </div>
 
               <!-- Timeline Item -->
-              <div class="flex flex-col items-center text-center group">
+              <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('CU')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
                   <img src="/assets/cu.png" alt="CU" class="h-10 object-contain" />
                 </div>
@@ -307,6 +307,24 @@
             </div>
           </div>
         </section>
+
+        <!-- Modal -->
+        <div id="jobModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+          <div class="bg-white rounded-xl shadow-2xl p-8 max-w-xl w-full relative text-gray-800" style="font-family: 'Merriweather', serif;">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold cursor-pointer">&times;</button>
+
+            <!-- Title -->
+            <h3 id="modalTitle" class="text-2xl font-bold mb-1" style="font-family: 'DM Serif Display', serif;"></h3>
+
+            <!-- Subtitle -->
+            <p id="modalSubtitle" class="text-md font-semibold text-gray-600 mb-4" style="font-family: 'Source Serif 4', serif;"></p>
+
+            <!-- Content -->
+            <p id="modalContent" class="text-[1.05rem] leading-7 text-justify"></p>
+          </div>
+        </div>
+
 
 
 
@@ -438,6 +456,79 @@ function prevCard() {
 
 // Initial render
 renderCard(currentProject);
+
+const modal = document.getElementById("jobModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalSubtitle = document.getElementById("modalSubtitle");
+const modalContent = document.getElementById("modalContent");
+
+function openModal(key) {
+  const titles = {
+    ICCW: "AI Project Intern",
+    MTE: "Data Analyst",
+    SSS: "Data Scientist",
+    ZENOYA: "Data Engineer",
+    CU: "Data Engineer"
+  };
+
+  const subtitles = {
+    ICCW: "International Centre for Clean Water",
+    MTE: "MedTourEasy",
+    SSS: "Solar Secure Solutions",
+    ZENOYA: "Studio Zenoya",
+    CU: "University of Colorado Boulder - Libraries"
+  };
+
+  const descriptions = {
+  ICCW: `
+    <span class="text-sm text-gray-600 block mb-3">Jun 2023 - Aug 2023</span>
+    <p class="mb-2">Automated literature reviews using OpenAI’s language models to support water quality research.</p>
+    <p class="mb-2">Reduced manual research time by over 70% by developing efficient prompts and pipelines.</p>
+    <p>Contributed to building an AI-driven research workflow focused on environmental impact.</p>
+  `,
+
+  MTE: `
+    <span class="text-sm text-gray-600 block mb-3">Jul 2023 - Aug 2023</span>
+    <p class="mb-2">Conducted statistical analysis on mortality trends between right- and left-handed individuals.</p>
+    <p class="mb-2">Cleaned, structured, and visualized data to uncover significant age differences.</p>
+    <p>Summarized insights to support healthcare-related research.</p>
+  `,
+
+  SSS: `
+    <span class="text-sm text-gray-600 block mb-3">Jan 2023 - Dec 2023</span>
+    <p class="mb-2">Built and tuned fraud detection models using Python (Scikit-learn, XGBoost), reducing false positives by 20%.</p>
+    <p class="mb-2">Designed ETL workflows for structured and unstructured data sources.</p>
+    <p>Developed EDA dashboards to support fraud risk analysis.</p>
+  `,
+
+  ZENOYA: `
+    <span class="text-sm text-gray-600 block mb-3">Jan 2024 - Jul 2024</span>
+    <p class="mb-2">Retrieved and processed large datasets from APIs to ensure accurate pipeline ingestion.</p>
+    <p class="mb-2">Developed reusable Python scripts for data cleaning and transformation, reducing manual workload by 40%.</p>
+    <p>Optimized NoSQL queries to improve database performance by 25%.</p>
+  `,
+
+  CU: `
+    <span class="text-sm text-gray-600 block mb-3">Jan 2025 - Present</span>
+    <p class="mb-2">Automated metadata extraction from high-resolution TIFF files using Python and OCR (Tesseract).</p>
+    <p class="mb-2">Built a deduplication system to identify and eliminate redundant archival data, improving efficiency by 30%.</p>
+    <p>Structured and cleaned datasets using SQL to support long-term digital preservation and research access.</p>
+  `
+};
+
+
+  // Assign content
+  document.getElementById("modalTitle").innerText = titles[key] || "Role Title";
+  document.getElementById("modalSubtitle").innerText = subtitles[key] || "";
+  document.getElementById("modalContent").innerHTML = descriptions[key] || "More info coming soon.";
+  modal.classList.remove("hidden");
+}
+
+function closeModal() {
+  document.getElementById("jobModal").classList.add("hidden");
+}
+
+
 </script>
 </body>
 
