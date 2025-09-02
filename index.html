@@ -359,12 +359,139 @@
               <p>
                 What excites me most about data science is that there’s always something new to explore, a new method, a new tool, a new way of thinking.
                 In a world that keeps evolving, this field keeps me curious, alert, and motivated.
-                There’s still a long way to go, and honestly, I’m excited for whatever life’s got planned next.
+                There’s still a long way to go, and honestly, I’m excited for whatever's next.
               </p>
             </div>
 
           </div>
         </section>
+
+        <!-- Community & Impact Section -->
+        <section id="community" class="full-width bg-gray-100 flex justify-center items-center py-24 px-6">
+          <div class="bg-white border border-gray-300 rounded-2xl p-10 max-w-6xl w-full shadow-sm">
+            
+            <!-- Heading -->
+            <div class="text-center mb-12">
+              <h2 class="text-4xl md:text-5xl font-bold" style="font-family: 'DM Serif Display', serif;">
+                Community & Impact
+              </h2>
+              <p class="mt-3 text-gray-600 text-lg italic" style="font-family: 'Merriweather', serif;">
+                Highlights from my journey
+              </p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-800" style="font-family: 'Merriweather', serif;">
+              
+              <!-- Hackathons -->
+              <div onclick="openCommunityModal('hackathons')" 
+                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
+                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
+                  Hackathons
+                </h3>
+                <p class="text-justify leading-relaxed">
+                  Participated in university and global hackathons including <strong>Invented</strong> and <strong>MicroWise</strong>. 
+                  Click to see more →
+                </p>
+              </div>
+
+              <!-- Workshops -->
+              <div onclick="openCommunityModal('workshops')" 
+                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
+                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
+                  Workshops & Fairs
+                </h3>
+                <p class="text-justify leading-relaxed">
+                  Engaged with the data community through <strong>CU Boulder Data Science Fairs</strong> and 
+                  <strong>focus group workshops</strong>. Click to see more →
+                </p>
+              </div>
+
+              <!-- Community Events -->
+              <div onclick="openCommunityModal('events')" 
+                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
+                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
+                  Community Events
+                </h3>
+                <p class="text-justify leading-relaxed">
+                  Active participant in events like the <strong>CIRES Rendezvous</strong>, presenting research on 
+                  tsunami marigram archives. Click to see more →
+                </p>
+              </div>
+
+              <!-- Meetups -->
+              <div onclick="openCommunityModal('meetups')" 
+                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
+                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
+                  Meetups
+                </h3>
+                <p class="text-justify leading-relaxed">
+                  Attended meetups like <strong>Women in Data Science (WiDS)</strong> and local data networking sessions. 
+                  Click to see more →
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- Community Modal -->
+        <div id="communityModal" 
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+          <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-5xl w-full relative flex flex-col md:flex-row">
+            
+            <!-- Close Button -->
+            <button onclick="closeCommunityModal()" 
+                    class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
+
+            <!-- Left: Image -->
+            <div class="w-full md:w-2/5 pr-0 md:pr-6 mb-4 md:mb-0">
+              <img id="communityImg" src="" alt="Community Image" 
+                  class="w-full h-64 md:h-full object-cover rounded-lg border" />
+            </div>
+
+            <!-- Right: Content -->
+            <div class="w-full md:w-3/5 text-gray-800 flex flex-col justify-start" style="font-family: 'Merriweather', serif;">
+              <h3 id="communityTitle" 
+                  class="text-2xl font-extrabold mb-2 text-black" 
+                  style="font-family: 'DM Serif Display', serif;"></h3>
+              <hr class="border-t border-gray-300 mb-4">
+              <div id="communityDesc" class="text-justify leading-relaxed"></div>
+            </div>
+          </div>
+        </div>
+        </section>
+
+        <!-- Hire Me Section -->
+        <section id="hire" class="full-width bg-gray-900 flex justify-center items-center py-32 px-6">
+          <div class="text-center max-w-3xl">
+            
+            <!-- Heading -->
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-6" style="font-family: 'DM Serif Display', serif;">
+              Hire me or let me add value to your company
+            </h2>
+            <p class="text-gray-300 mb-10 text-lg" style="font-family: 'Merriweather', serif;">
+              Passionate about solving problems with data, building meaningful solutions, 
+              and helping teams grow stronger with analytics & AI.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+              <a href="assets/Moukthika_Gunapaneedu_Resume.pdf" 
+                download 
+                class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition font-semibold">
+                📄 Download Resume
+              </a>
+              <a href="mailto:moukthikagunapaneedu@gmail.com" 
+                class="px-6 py-3 bg-white text-gray-900 rounded-lg shadow-md hover:bg-gray-200 transition font-semibold">
+                ✉️ Contact Me
+              </a>
+            </div>
+          </div>
+        </section>
+
+
+
   </main>
 
   <script>
@@ -427,7 +554,7 @@
       desc1: "In a team project to streamline access to academic insights, we built a distributed system that processes arXiv papers and returns audio summaries using Retrieval-Augmented Generation. The goal was to help researchers discover relevant work faster through AI-generated transcripts and voice outputs.",
       desc2: "I contributed to the recommendation system that suggests similar research pods by leveraging vector similarity from transcript embeddings. This involved tuning pgvector queries and refining the transcript storage pipeline to improve content-matching accuracy across a growing corpus.",
       img: "/assets/researchpod.png",
-      link: "https://github.com/richardr1126/research-pod-api",
+      link: "https://researchpod.richardr.dev/",
       readMore: "https://github.com/richardr1126/research-pod-api"
     },
       {
@@ -565,6 +692,65 @@
   function closeModal() {
     document.getElementById("jobModal").classList.add("hidden");
   }
+
+  const communityData = {
+  hackathons: {
+    title: "Hackathons",
+    img: "assets/hackathon.png", // replace with actual image
+    desc: `
+      <p class="mb-3">I participated in <strong>Invented</strong> where we built a predictive model 
+      to optimize campus resource usage (study spaces, libraries, etc.).</p>
+      <p class="mb-3">At <strong>MicroWise</strong>, part of the AMD AI PC Hackathon, 
+      our team designed an AI-powered microloan approval system. 
+      I worked on the ML recommendation module to match applicants to lending criteria.</p>
+      <p>These events honed my skills in rapid prototyping, collaboration, and pitching ideas under pressure.</p>
+    `
+  },
+  workshops: {
+    title: "Workshops & Fairs",
+    img: "assets/workshop.png",
+    desc: `
+      <p class="mb-3">At CU Boulder Data Science Fairs, I showcased projects like 
+      <strong>BankIntel</strong> and the <strong>Tsunami Marigram Archive</strong>, 
+      engaging in discussions on ethics, big data, and visualization methods.</p>
+      <p>I also attended <strong>focus group workshops</strong> on applying chi-square 
+      tests and ANOVA in real-world contexts, broadening my statistical toolkit.</p>
+    `
+  },
+  events: {
+    title: "Community Events",
+    img: "assets/event.png",
+    desc: `
+      <p class="mb-3">At the <strong>CIRES Rendezvous</strong>, I presented 
+      tsunami marigram archival research, highlighting methods for digitizing 
+      and preserving NOAA microfilm records.</p>
+      <p>This contribution supports global disaster research, ensuring historical 
+      tsunami data remains accessible for future analysis.</p>
+    `
+  },
+  meetups: {
+    title: "Meetups",
+    img: "assets/meetup.png",
+    desc: `
+      <p class="mb-3">I actively participated in <strong>Women in Data Science (WiDS)</strong> 
+      meetups, connecting with professionals and peers in AI and data.</p>
+      <p>These meetups emphasized diversity, inclusion, and mentorship, while also 
+      exposing me to cutting-edge applications of machine learning and AI.</p>
+    `
+  }
+};
+
+function openCommunityModal(key) {
+  const data = communityData[key];
+  document.getElementById("communityTitle").innerText = data.title;
+  document.getElementById("communityImg").src = data.img;
+  document.getElementById("communityDesc").innerHTML = data.desc;
+  document.getElementById("communityModal").classList.remove("hidden");
+}
+
+function closeCommunityModal() {
+  document.getElementById("communityModal").classList.add("hidden");
+}
   
 </script>
 </body>
