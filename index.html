@@ -58,6 +58,7 @@
       position: absolute;
       width: 100vw;
       height: 80px;
+      pointer-events: none;
       animation: lineMove 1.2s ease-in-out forwards;
     }
 
@@ -132,7 +133,66 @@
       opacity: 1;
     }
 
+      @media (max-width: 767px) {
+    html, body {
+      height: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      min-width: 100vw;
+      height: auto;
+      scroll-snap-type: none;
+    }
+
+    section {
+      height: auto;
+      min-height: auto;
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+
+    section.full-width,
+    section.partial-width {
+      flex: 0 0 auto;
+      width: 100%;
+    }
+
+    .line { display: none; }
+    .arrow-right { display: none; }
+
+    #projectCard > div {
+      height: auto !important;
+      max-height: none !important;
+    }
+
+    #story .min-w-\[1600px\] {
+      min-width: 100% !important;
+    }
+
+    
+    .h-screen { height: auto !important; }
+  }
+
+
+  img { max-width: 100%; height: auto; }
+
+  @keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(8px); }
+}
+
+#down-arrow {
+  cursor: pointer;
+  animation: nudge 1.5s infinite;
+}
+
+
   </style>
+
 </head>
 
 <body>
@@ -156,23 +216,30 @@
         <span id="role" class="role-text">.</span>
       </div>
 
-      <div id="down-arrow" class="text-black text-2xl mt-4 transition-opacity duration-1000">
-        <i class="fas fa-arrow-right"></i>
-      </div>
+      <div id="down-arrow" class="text-black text-2xl mt-4 transition-opacity duration-1000 cursor-pointer"
+     onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth', inline: 'start'});">
+  <i class="fas fa-arrow-right"></i>
+</div>
+
     </section>
 
     <!-- Intro Section -->
     <section id="intro" class="partial-width h-screen bg-gray-100 flex flex-col justify-center items-center px-4 text-center space-y-4 shadow-inner">
       <div class="rounded-xl overflow-hidden shadow-lg border border-gray-300">
-        <img src="assets/mouk.png" alt="Moukthika" class="w-44 h-56 object-cover object-top" />
+        <img src="assets/mouk.png" alt="Moukthika" class="w-44 h-56 object-cover object-top" loading="lazy" />
       </div>
       <h2 class="text-xl font-bold" style="font-family: 'DM Serif Display', serif;">Hey, I'm Moukthika!</h2>
       <p class="italic text-gray-700 text-sm">You can call me Mouk 👋</p>
       <div class="social-icons flex mt-2">
-        <a href="https://www.linkedin.com/in/moukthika-gunapaneedu-863460215/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.linkedin.com/in/moukthika-gunapaneedu-863460215/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
         <a href="mailto:moukthikagunapaneedu@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://github.com/moukthika-gunapaneedu" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://medium.com/@moukthikagunapaneedu" target="_blank"><i class="fab fa-medium-m"></i></a>
+        <a href="https://github.com/moukthika-gunapaneedu" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+<a href="https://mouks-momentum.hashnode.dev/" target="_blank" rel="noopener">
+  <img src="https://cdn.simpleicons.org/hashnode/000000" 
+       alt="Hashnode" 
+       class="w-5 h-5" 
+       loading="lazy">
+</a>
       </div>
     </section>
 
@@ -201,14 +268,14 @@
 
         <!-- Arrow buttons -->
          <button onclick="prevCard()" 
-          class="absolute -left-10 top-1/2 transform -translate-y-1/2 text-3xl text-gray-500 hover:text-black z-10">
+          class="hidden md:block absolute -left-10 top-1/2 transform -translate-y-1/2 text-3xl text-gray-500 hover:text-black z-10">
           &#8249;
         </button>
 
         <div id="projectCard" class="w-full"></div>
 
         <button onclick="nextCard()" 
-          class="absolute -right-10 top-1/2 transform -translate-y-1/2 text-3xl text-gray-500 hover:text-black z-10">
+          class="hidden md:block absolute -right-10 top-1/2 transform -translate-y-1/2 text-3xl text-gray-500 hover:text-black z-10">
           &#8250;
         </button>
       </div>
@@ -220,7 +287,7 @@
           <h2 class="text-4xl md:text-5xl font-bold text-center mb-6" style="font-family: 'DM Serif Display', serif;">
             Tools You Can Trust Me With
           </h2>
-           <img src="/assets/tools.png" alt="Tools I Trust" class="w-full max-w-2xl mx-auto" />
+           <img src="assets/tools.png" alt="Tools I Trust" class="w-full max-w-2xl mx-auto" loading="lazy" />
         </div>
       </section>
 
@@ -237,12 +304,11 @@
 
           <!-- Timeline with Arrows -->
           <div class="overflow-x-auto w-full mt-32">
-            <div class="flex items-center justify-start min-w-[1600px] gap-10 px-10">
-
+            <div class="flex items-center justify-start gap-10 px-10" style="min-width:1600px;">
               <!-- Timeline Item -->
               <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('MTE')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
-                  <img src="/assets/mte.png" alt="MTE" class="h-10 object-contain" />
+                  <img src="assets/mte.png" alt="MTE" class="h-10 object-contain" loading="lazy" />
                 </div>
                 <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Analyst</div>
                 <div class="text-sm italic text-gray-700">MedTourEasy</div>
@@ -257,7 +323,7 @@
               <!-- Timeline Item -->
               <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('ICCW')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
-                  <img src="/assets/iccw.png" alt="ICCW" class="h-12 object-contain" />
+                  <img src="assets/iccw.png" alt="ICCW" class="h-12 object-contain" loading="lazy" />
                 </div>
                 <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Project Intern</div>
                 <div class="text-sm italic text-gray-700">ICCW</div>
@@ -271,7 +337,7 @@
               <!-- Timeline Item -->
               <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('SSS')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
-                  <img src="/assets/solar.png" alt="Solar Secure" class="h-12 object-contain" />
+                  <img src="assets/solar.png" alt="Solar Secure" class="h-12 object-contain" loading="lazy" />
                 </div>
                 <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Scientist</div>
                 <div class="text-sm italic text-gray-700">Solar Secure Solutions</div>
@@ -285,7 +351,7 @@
               <!-- Timeline Item -->
               <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('ZENOYA')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
-                  <img src="/assets/zenoya.png" alt="Zenoya" class="h-10 object-contain" />
+                  <img src="assets/zenoya.png" alt="Zenoya" class="h-10 object-contain" loading="lazy" />
                 </div>
                 <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Database Intern</div>
                 <div class="text-sm italic text-gray-700">Studio Zenoya</div>
@@ -299,7 +365,7 @@
               <!-- Timeline Item -->
               <div class="flex flex-col items-center text-center group cursor-pointer" onclick="openModal('CU')">
                 <div class="w-28 h-28 rounded-full border-4 border-gray-300 bg-white flex items-center justify-center shadow-lg mb-3 transition-transform duration-300 group-hover:scale-125">
-                  <img src="/assets/cu.png" alt="CU" class="h-10 object-contain" />
+                  <img src="assets/cu.png" alt="CU" class="h-10 object-contain" loading="lazy" />
                 </div>
                 <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Engineer</div>
                 <div class="text-sm italic text-gray-700">CU Boulder Libraries</div>
@@ -340,7 +406,7 @@
             <div class="space-y-6 text-[1.05rem] text-gray-800 leading-8 text-justify" style="font-family: 'Merriweather', serif;">
               <p>
                 I'm currently in my second year of <strong>Master's in Data Science</strong> program at the 
-                <a href="https://www.colorado.edu/" target="_blank" class="font-bold hover:underline transition duration-200">
+                <a href="https://www.colorado.edu/" target="_blank" rel="noopener" class="font-bold hover:underline transition duration-200">
                   University of Colorado Boulder
                 </a> - Sko Buffs!
               </p>
@@ -352,7 +418,7 @@
 
               <p>
                 I’m a quick learner and tend to pick things up fast, especially when I can break them down in my own way. YouTube has honestly been one of my favorite (and most underrated) teachers. I’ve also completed 
-                <a href="https://drive.google.com/drive/folders/1js2TrPJz5Gws6HzUzJpXfzHYkh5rQH5-?usp=sharing" target="_blank" class="font-bold hover:underline transition duration-200">
+                <a href="https://drive.google.com/drive/folders/1js2TrPJz5Gws6HzUzJpXfzHYkh5rQH5-?usp=sharing" target="_blank" rel="noopener" class="font-bold hover:underline transition duration-200">
                   certifications</a> from places like <strong>Google</strong>, <strong>Stanford</strong>, and <strong>Harvard</strong> that genuinely helped me build my understanding.
               </p>
 
@@ -366,101 +432,278 @@
           </div>
         </section>
 
-        <!-- Community & Impact Section -->
-        <section id="community" class="full-width bg-gray-100 flex justify-center items-center py-24 px-6">
-          <div class="bg-white border border-gray-300 rounded-2xl p-10 max-w-6xl w-full shadow-sm">
-            
-            <!-- Heading -->
-            <div class="text-center mb-12">
-              <h2 class="text-4xl md:text-5xl font-bold" style="font-family: 'DM Serif Display', serif;">
-                Community & Impact
-              </h2>
-              <p class="mt-3 text-gray-600 text-lg italic" style="font-family: 'Merriweather', serif;">
-                Highlights from my journey
-              </p>
-            </div>
+<!-- Community & Impact Section -->
+<section id="community" class="full-width bg-gray-100 flex justify-center items-center py-24 px-6">
+  <div class="p-10 max-w-6xl w-full">
+    
+    <!-- Heading -->
+    <div class="text-center">
+      <h2 class="text-4xl md:text-5xl font-bold" style="font-family:'DM Serif Display', serif;">
+        Community & Impact
+      </h2>
+    </div>
 
-            <!-- Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-10 text-gray-800" style="font-family: 'Merriweather', serif;">
-              
-              <!-- Hackathons -->
-              <div onclick="openCommunityModal('hackathons')" 
-                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
-                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
-                  Hackathons
-                </h3>
-                <p class="text-justify leading-relaxed">
-                  Participated in university and global hackathons including <strong>Invented</strong> and <strong>MicroWise</strong>. 
-                  Click to see more →
-                </p>
-              </div>
+    
+    <!-- Tabs / Navigation Buttons -->
+    <div id="communityTabs" class="mt-8 flex flex-wrap items-center justify-center gap-3">
+      <button data-key="hackathons"
+              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-600 text-white hover:bg-blue-700 transition font-semibold"
+              style="font-family:'Merriweather', serif;">
+        Hackathons
+      </button>
+      <button data-key="meetups"
+              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
+              style="font-family:'Merriweather', serif;">
+        Meetups
+      </button>
+      <button data-key="fairs"
+              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
+              style="font-family:'Merriweather', serif;">
+        Fairs
+      </button>
+      <button data-key="events"
+              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
+              style="font-family:'Merriweather', serif;">
+        Events
+      </button>
+      <button data-key="volunteering"
+              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
+              style="font-family:'Merriweather', serif;">
+        Volunteering
+      </button>
+    </div>
+    <!-- Panel (renders the selected card, inner box stays) -->
+    <div id="communityPanel" class="mt-10"></div>
+  </div>
+</section>
 
-              <!-- Workshops -->
-              <div onclick="openCommunityModal('workshops')" 
-                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
-                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
-                  Workshops & Fairs
-                </h3>
-                <p class="text-justify leading-relaxed">
-                  Engaged with the data community through <strong>CU Boulder Data Science Fairs</strong> and 
-                  <strong>focus group workshops</strong>. Click to see more →
-                </p>
-              </div>
+<script>
+  // Data for each tab
+  const communityItems = {
+  hackathons: {
+    title: "Hackathons",
+    img: "assets/hackathon_logos_square.png",
+    align: "left",
+    desc1: `
+      <p>I love hackathons because they’re fast, messy, and full of creative sparks. 
+      They push me to think clearly under pressure, prototype overnight, and collaborate with sharp people. Across these, I learned teamwork under pressure, 
+      rapid prototyping, and turning ideas into tangible outcomes.</p>
 
-              <!-- Community Events -->
-              <div onclick="openCommunityModal('events')" 
-                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
-                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
-                  Community Events
-                </h3>
-                <p class="text-justify leading-relaxed">
-                  Active participant in events like the <strong>CIRES Rendezvous</strong>, presenting research on 
-                  tsunami marigram archives. Click to see more →
-                </p>
-              </div>
+       <p class="mt-3"><strong>Denver International Airport (DaSSA Hackathon 2024):</strong> Built a Power BI + NLP dashboard for ServiceNow & Azure DevOps; placed 4th overall. <br>
+  <strong>HackCU 2024:</strong> Prototyped an AI-powered microloans approval system, exploring how ML can drive inclusion.<br>
 
-              <!-- Meetups -->
-              <div onclick="openCommunityModal('meetups')" 
-                  class="p-6 bg-white border rounded-2xl shadow-md hover:shadow-lg transition cursor-pointer">
-                <h3 class="text-xl font-bold mb-2 text-blue-700" style="font-family: 'DM Serif Display', serif;">
-                  Meetups
-                </h3>
-                <p class="text-justify leading-relaxed">
-                  Attended meetups like <strong>Women in Data Science (WiDS)</strong> and local data networking sessions. 
-                  Click to see more →
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
+  <strong>T9 MediHack:</strong> Designed healthcare + AI concepts showing how tech can serve real needs.</p>
+    `,
+  },
+    meetups: {
+      title: "Meetups",
+      desc1:
+        "Active participant in local data meetups and Women in Data Science (WiDS) gatherings—learning, sharing, and growing with the community.",
+      desc2:
+        "These sessions helped me connect with mentors and stay current with real-world applications.",
+      img: "assets/meetup.png",
+      align: "right"
+    },
+    fairs: {
+      title: "Fairs",
+      desc1:
+        "Shared projects at CU Boulder Data Science Fairs, discussing design choices, evaluation, and impact with peers and faculty.",
+      desc2:
+        "Highlights included bank marketing analysis and archival digitization work.",
+      img: "assets/fair.png",
+      align: "left"
+    },
+    events: {
+      title: "Events",
+      desc1:
+        "Presented archival tsunami marigram work at CIRES Rendezvous—contributing to preservation and access for research.",
+      desc2:
+        "Experience presenting to broad audiences and answering domain questions.",
+      img: "assets/event.png",
+      align: "right"
+    },
+    volunteering: {
+      title: "Volunteering",
+      desc1:
+        "Supported student/community groups with data cleanup and basic dashboarding—helping teams make sense of their information.",
+      desc2:
+        "Focused on clarity, maintainability, and handoff-ready artifacts.",
+      img: "assets/volunteer.png",
+      align: "left"
+    }
+  };
+
+  // Render helper (image left on desktop, stacks on mobile; text justified)
+// Render helper (no in-card heading; smaller image)
+function renderCommunityCard(key) {
+  const c = communityItems[key];
+  if (!c) return;
+
+const imageBlock = `
+  <div class="w-full md:w-2/5 ${c.align === 'left' ? 'md:pr-6 md:justify-start' : 'md:pl-6 md:justify-end'} 
+              mb-4 md:mb-0 flex items-center justify-center">
+    <img src="${c.img}" alt="${c.title}" 
+         class="w-40 md:w-48 h-auto object-contain" loading="lazy">
+  </div>
+`;
 
 
-        <!-- Community Modal -->
-        <div id="communityModal" 
-            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-          <div class="bg-white rounded-2xl shadow-2xl p-6 max-w-5xl w-full relative flex flex-col md:flex-row">
-            
-            <!-- Close Button -->
-            <button onclick="closeCommunityModal()" 
-                    class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl font-bold">&times;</button>
 
-            <!-- Left: Image -->
-            <div class="w-full md:w-2/5 pr-0 md:pr-6 mb-4 md:mb-0">
-              <img id="communityImg" src="" alt="Community Image" 
-                  class="w-full h-64 md:h-full object-cover rounded-lg border" />
-            </div>
+  // No <h3> title and no <hr>; just the text content
+  const textBlock = `
+    <div class="w-full md:flex-1 text-gray-800" style="font-family:'Merriweather', serif;">
+      <div class="space-y-3 text-justify">
+        ${c.desc1}
+        ${c.desc2}
+      </div>
+    </div>
+  `;
 
-            <!-- Right: Content -->
-            <div class="w-full md:w-3/5 text-gray-800 flex flex-col justify-start" style="font-family: 'Merriweather', serif;">
-              <h3 id="communityTitle" 
-                  class="text-2xl font-extrabold mb-2 text-black" 
-                  style="font-family: 'DM Serif Display', serif;"></h3>
-              <hr class="border-t border-gray-300 mb-4">
-              <div id="communityDesc" class="text-justify leading-relaxed"></div>
-            </div>
-          </div>
-        </div>
-        </section>
+  const content = `
+    <div class="bg-white rounded-2xl w-[95%] mx-auto flex flex-col md:flex-row p-6 shadow-md border border-gray-300">
+      ${c.align === 'left' ? imageBlock + textBlock : textBlock + imageBlock}
+    </div>
+  `;
+
+  document.getElementById("communityPanel").innerHTML = content;
+}
+
+
+
+  // Tabs behavior
+  const tabs = document.getElementById("communityTabs");
+  tabs.addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-key]");
+    if (!btn) return;
+    [...tabs.querySelectorAll("button[data-key]")].forEach(b => {
+      b.classList.remove("bg-blue-600","text-white","hover:bg-blue-700");
+      b.classList.add("bg-blue-100","text-blue-700","hover:bg-blue-200");
+    });
+    btn.classList.remove("bg-blue-100","text-blue-700","hover:bg-blue-200");
+    btn.classList.add("bg-blue-600","text-white","hover:bg-blue-700");
+    renderCommunityCard(btn.dataset.key);
+  });
+
+  // Initial render (image left, text right)
+  renderCommunityCard("hackathons");
+</script>
+
+
+
+        <!-- Final CTA / Last Page -->
+<!-- Final CTA / Last Page -->
+<section id="cta" class="full-width bg-white flex items-center justify-center py-28 px-6">
+  <div class="max-w-5xl w-full text-center">
+    
+    <!-- Headline -->
+    <h2 class="text-4xl md:text-5xl font-bold text-black mb-6" style="font-family:'DM Serif Display', serif;">
+      Let’s work together.
+    </h2>
+    <p class="text-gray-700 mb-10 text-lg" style="font-family:'Merriweather', serif;">
+      Focused on adding value to your team and driving results that matter.
+    </p>
+
+   <!-- Quick Value (3 bullets) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-left">
+  <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
+    <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
+      Delivery
+    </h3>
+    <hr class="border-t border-gray-300 mb-2">
+    <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
+      From messy data to decisions: ETL → EDA → models → dashboards, end-to-end.
+    </p>
+  </div>
+  
+  <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
+    <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
+      Clarity
+    </h3>
+    <hr class="border-t border-gray-300 mb-2">
+    <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
+      Story-first reporting so stakeholders know what to do next.
+    </p>
+  </div>
+
+  <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
+    <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
+      Ownership
+    </h3>
+    <hr class="border-t border-gray-300 mb-2">
+    <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
+      I care about outcomes post-launch: monitoring, iteration, and real adoption.
+    </p>
+  </div>
+</div>
+
+
+    
+
+
+    <!-- Primary Actions -->
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="assets/Moukthika_Gunapaneedu_Resume.pdf" download
+         class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+         style="font-family:'Merriweather', serif;">
+        Download Resume
+      </a>
+    </div>
+
+    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+      <a href="mailto:moukthikagunapaneedu@gmail.com"
+         class="px-6 py-3 bg-gray-900 text-white rounded-lg shadow-md hover:bg-gray-800 transition"
+         style="font-family:'Merriweather', serif;">
+        moukthikagunapaneedu@gmail.com
+      </a>
+      </div>
+
+
+      <!-- Social mini-row -->
+<div class="mt-6 flex items-center justify-center gap-6 text-gray-600 text-xl">
+  <!-- GitHub -->
+  <a href="https://github.com/moukthika-gunapaneedu" target="_blank" rel="noopener" class="hover:text-black transition">
+    <i class="fab fa-github"></i>
+  </a>
+
+  <!-- Medium -->
+  <a href="https://medium.com/@moukthikagunapaneedu" target="_blank" rel="noopener" class="hover:text-black transition">
+    <i class="fab fa-medium-m"></i>
+  </a>
+
+  <!-- Hashnode (official icon via Simple Icons CDN) -->
+  <a href="https://hashnode.com/@moukthikagunapaneedu" target="_blank" rel="noopener" class="transition opacity-80 hover:opacity-100">
+    <img
+      src="https://cdn.simpleicons.org/hashnode/000000"
+      alt="Hashnode"
+      class="w-5 h-5"
+      loading="lazy"
+    />
+  </a>
+
+  <!-- LinkedIn -->
+  <a href="https://www.linkedin.com/in/moukthika-gunapaneedu-863460215/" target="_blank" rel="noopener" class="hover:text-black transition">
+    <i class="fab fa-linkedin-in"></i>
+  </a>
+</div>
+
+    <!-- Tiny credibility strip -->
+    <div class="mt-10 grid grid-cols-3 gap-6 text-gray-600 text-sm" style="font-family:'Merriweather', serif;">
+      <div class="border-t border-gray-300 pt-3 text-center">
+        <span class="text-black font-semibold">10+ </span>projects shipped
+      </div>
+      <div class="border-t border-gray-300 pt-3 text-center">
+        <span class="text-black font-semibold">2+ yrs </span>hands-on data work
+      </div>
+      <div class="border-t border-gray-300 pt-3 text-center">
+        <span class="text-black font-semibold">3 </span>live dashboards
+      </div>
+    </div>
+
+
+
+  </div>
+</section>
+
   </main>
 
   <script>
@@ -506,23 +749,12 @@
       if (next) next.scrollIntoView({ behavior: "smooth", inline: "start" });
     }
 
-    window.addEventListener("load", () => {
-      const savedScroll = localStorage.getItem("horizontalScroll");
-      if (savedScroll !== null) {
-        window.scrollTo({ left: parseInt(savedScroll), top: 0, behavior: "instant" });
-      }
-    });
-
-    window.addEventListener("beforeunload", () => {
-      localStorage.setItem("horizontalScroll", window.scrollX);
-    });
-
     const projects = [
     {
       title: "Research Pod",
       desc1: "In a team project to streamline access to academic insights, we built a distributed system that processes arXiv papers and returns audio summaries using Retrieval-Augmented Generation. The goal was to help researchers discover relevant work faster through AI-generated transcripts and voice outputs.",
       desc2: "I contributed to the recommendation system that suggests similar research pods by leveraging vector similarity from transcript embeddings. This involved tuning pgvector queries and refining the transcript storage pipeline to improve content-matching accuracy across a growing corpus.",
-      img: "/assets/researchpod.png",
+      img: "assets/researchpod.png",
       link: "https://researchpod.richardr.dev/",
       readMore: "https://github.com/richardr1126/research-pod-api"
     },
@@ -530,7 +762,7 @@
       title: "Bank Marketing Campaign Analysis",
       desc1: "This project investigates a Portuguese bank’s direct marketing campaign aimed at encouraging term deposit subscriptions. The focus was on identifying behavioral and demographic patterns through a machine learning approach, leveraging both statistical analysis and data storytelling techniques.",
       desc2: "I developed an interactive website that presents machine learning insights and clustering results. The site features models like SVM, decision trees, and PCA-based customer segmentation, built entirely with HTML, Tailwind CSS, and hosted via GitHub Pages.",
-      img: "/assets/bankintel.png",
+      img: "assets/bankintel.png",
       link: "https://moukthika-gunapaneedu.github.io/Bank-Marketing-Campaign-Analysis/",
       readMore: "https://moukthika-gunapaneedu.github.io/Bank-Marketing-Campaign-Analysis/"
   },
@@ -538,7 +770,7 @@
     title: "DoctorVisits: A Statistical Analysis",
     desc1: "I explored what drives the frequency of doctor visits using a healthcare dataset from Australia. The analysis examined how variables like age, income, health condition, and insurance coverage relate to utilization behavior through EDA and statistical summaries.",
     desc2: "I applied linear regression, t-tests, ANOVA, and chi-square tests to test hypotheses and interpret model diagnostics. I really love statistics. This project reflects my comfort with statistical tools and my belief that data should not only reflect reality, but help shape a better one.",
-    img: "/assets/doctorvisits.png",
+    img: "assets/doctorvisits.png",
     link: "https://github.com/moukthika-gunapaneedu/doctor-visits-analysis",
     readMore: "https://github.com/moukthika-gunapaneedu/doctor-visits-analysis/blob/main/DoctorVisits_Analysis.ipynb"
   }
@@ -547,35 +779,33 @@
   let currentProject = 0;
 
   function renderCard(index) {
-    const p = projects[index];
-    const html = `
-    <div class="bg-white rounded-2xl w-[95%] mx-auto flex p-6 shadow-xl border border-gray-300 h-[350px] max-h-[350px]" style="font-family: 'Merriweather', serif;">
-      <div class="w-2/5 h-full pr-6 overflow-hidden">
-        <div class="w-full h-full">
-          <img src="${p.img}" alt="Project Image" class="w-full h-full object-cover object-top rounded-lg" />
-        </div>
+  const p = projects[index];
+  const html = `
+  <div class="bg-white rounded-2xl w-[95%] mx-auto flex flex-col md:flex-row p-6 shadow-xl border border-gray-300 md:h-[350px] md:max-h-[350px] h-auto" style="font-family: 'Merriweather', serif;">
+    <div class="w-full md:w-2/5 md:h-full md:pr-6 mb-4 md:mb-0 overflow-hidden">
+      <img src="${p.img}" alt="${p.title} preview" class="w-full h-full object-cover object-top rounded-lg" />
+    </div>
+    <div class="w-full md:w-3/5 text-gray-800 flex flex-col justify-start">
+      <div>
+        <a href="${p.link}" target="_blank" rel="noopener">
+          <h3 class="text-2xl font-extrabold mb-1 text-black hover:underline" style="font-family: 'DM Serif Display', serif;">
+            ${p.title} <i class="fas fa-external-link-alt ml-1 text-base"></i>
+          </h3>
+        </a>
+        <hr class="border-t border-gray-400 mb-4 w-full">
+        <p class="text-justify mb-3">${p.desc1}</p>
+        <p class="text-justify">${p.desc2}</p>
       </div>
-      <div class="w-3/5 text-gray-800 flex flex-col justify-start">
-        <div>
-          <a href="${p.link}" target="_blank">
-            <h3 class="text-2xl font-extrabold mb-1 text-black hover:underline" style="font-family: 'DM Serif Display', serif;">
-              ${p.title} <i class="fas fa-external-link-alt ml-1 text-base"></i>
-            </h3>
-          </a>
-          <hr class="border-t border-gray-400 mb-4 w-full">
-          <p class="text-justify mb-3">${p.desc1}</p>
-          <p class="text-justify">${p.desc2}</p>
-        </div>
-        <div class="mt-4">
-        <a href="${p.readMore}" target="_blank" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+      <div class="mt-4">
+        <a href="${p.readMore}" target="_blank" rel="noopener" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
           Read More
         </a>
       </div>
-      </div>
     </div>
+  </div>
   `;
-    document.getElementById("projectCard").innerHTML = html;
-  }
+  document.getElementById("projectCard").innerHTML = html;
+}
 
 
   function nextCard() {
@@ -720,8 +950,84 @@ function openCommunityModal(key) {
 function closeCommunityModal() {
   document.getElementById("communityModal").classList.add("hidden");
 }
+
+  const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+
+  window.addEventListener("load", () => {
+    if (!isDesktop()) return;
+    const savedScroll = localStorage.getItem("horizontalScroll");
+    if (savedScroll !== null) {
+      window.scrollTo({ left: parseInt(savedScroll), top: 0, behavior: "instant" });
+    }
+  });
+
+  window.addEventListener("beforeunload", () => {
+    if (!isDesktop()) return;
+    localStorage.setItem("horizontalScroll", window.scrollX);
+  });
+
+  // Re-evaluate on resize (optional)
+  window.addEventListener('resize', () => {
+    // You could add logic here if you want to snap back to 0 when switching layouts, etc.
+  });
   
+  function scrollToNext() {
+    if (!isDesktop()) return; // only relevant for horizontal layout
+    const sections = document.querySelectorAll("main section");
+    const scrollX = window.scrollX || window.pageXOffset;
+    const currentIndex = Math.round(scrollX / window.innerWidth);
+    const next = sections[currentIndex + 1];
+    if (next) next.scrollIntoView({ behavior: "smooth", inline: "start" });
+  }
 </script>
+
+<!-- Bottom Dock Navigation -->
+<div id="bottom-nav" 
+     class="fixed bottom-6 inset-x-0 mx-auto w-max px-6 py-3 bg-white/80 backdrop-blur-md 
+            rounded-2xl shadow-lg flex gap-8 items-center text-gray-700 
+            opacity-0 translate-y-5 transition-all duration-500 ease-in-out z-50">
+  
+  <a href="#intro" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Intro">
+  <i class="fas fa-user"></i>
+</a>
+<a href="#bring" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Skills">
+  <i class="fas fa-lightbulb"></i>
+</a>
+<a href="#projects" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Projects">
+  <i class="fas fa-project-diagram"></i>
+</a>
+<a href="#story" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Timeline">
+  <i class="fas fa-history"></i>
+</a>
+<a href="#learning" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Learning">
+  <i class="fas fa-book-open"></i>
+</a>
+<a href="#community" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Community">
+  <i class="fas fa-users"></i>
+</a>
+<a href="#cta" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Contact">
+  <i class="fas fa-envelope"></i>
+</a>
+
+</div>
+
+
+<script>
+  const bottomNav = document.getElementById("bottom-nav");
+
+  document.addEventListener("mousemove", (e) => {
+    // Reveal nav when mouse is near bottom (120px zone)
+    if (window.innerHeight - e.clientY < 120) {
+      bottomNav.classList.remove("opacity-0", "translate-y-5");
+    } else {
+      bottomNav.classList.add("opacity-0", "translate-y-5");
+    }
+  });
+</script>
+
+
+
+
 </body>
 
 </html>
