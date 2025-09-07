@@ -10,7 +10,8 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
 
   <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Merriweather&family=Source+Serif+4:ital,wght@1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:wght@400&family=Merriweather:wght@400;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
@@ -290,6 +291,55 @@
   }
 }
 
+  #community, 
+  #community * { 
+    font-style: normal !important; 
+    font-variant: normal !important;
+  }
+  #community em, 
+  #community i { 
+    font-style: normal !important; 
+  }
+
+  #community {
+  font-family: 'Merriweather', serif;   /* or 'Source Serif 4', serif; */
+  font-style: normal !important;
+}
+
+#community .cta-ghost{
+  display:inline-flex; align-items:center; gap:.5rem;
+  padding:.5rem .9rem; border:1px solid #D1D5DB; border-radius:.75rem;
+  background:#fff; color:#1f2937; font-weight:600;
+  box-shadow:0 1px 3px rgba(0,0,0,.05);
+  transition:background-color .25s ease, border-color .25s ease,
+             box-shadow .25s ease, transform .2s ease;
+}
+#community .cta-ghost:hover{
+  background:#f9fafb; border-color:#9CA3AF;
+  box-shadow:0 8px 24px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.05);
+  transform:translateY(-2px);
+}
+#community .cta-ghost:active{
+  transform:translateY(0); box-shadow:0 2px 6px rgba(0,0,0,.06);
+}
+#community .cta-mark, #community .cta-icon{
+  transition:transform .25s ease, opacity .25s ease;
+  opacity:.9;
+}
+#community .cta-ghost:hover .cta-icon{ transform:translateX(4px); opacity:1; }
+#community .cta-ghost:hover .cta-mark{ transform:translateX(-2px); opacity:1; }
+
+/* smaller CTA text (Events & Workshops bottom button) */
+#community .cta-ghost{
+  font-size: 0.8125rem;            /* ~13px */
+}
+#community .cta-ghost .cta-icon{    /* Font Awesome arrow */
+  font-size: 0.75rem;
+}
+#community .cta-ghost .cta-mark{    /* Hashnode mark */
+  width: 0.875rem;                  /* ~14px */
+  height: 0.875rem;
+}
 
   </style>
 
@@ -550,161 +600,270 @@
           </div>
         </section>
 
-<!-- Community & Impact Section -->
+
+<!-- ===================== Growth & Momentum ===================== -->
 <section id="community" class="full-width bg-gray-100 flex justify-center items-center py-24 px-6">
   <div class="p-10 max-w-6xl w-full">
-    
     <!-- Heading -->
     <div class="text-center">
       <h2 class="text-4xl md:text-5xl font-bold" style="font-family:'DM Serif Display', serif;">
-        Community & Impact
+        Growth &amp; Momentum
       </h2>
     </div>
 
-    
-    <!-- Tabs / Navigation Buttons -->
+    <!-- Tabs -->
     <div id="communityTabs" class="mt-8 flex flex-wrap items-center justify-center gap-3">
       <button data-key="hackathons"
-              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-600 text-white hover:bg-blue-700 transition font-semibold"
+              class="px-4 py-2 rounded-lg border border-gray-300 bg-black text-white hover:bg-gray-900 transition font-semibold"
               style="font-family:'Merriweather', serif;">
         Hackathons
       </button>
-      <button data-key="meetups"
-              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
-              style="font-family:'Merriweather', serif;">
-        Meetups
-      </button>
-      <button data-key="fairs"
-              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
-              style="font-family:'Merriweather', serif;">
-        Fairs
-      </button>
       <button data-key="events"
-              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
+              class="px-4 py-2 rounded-lg border border-gray-300 bg-gray-200 text-gray-800 hover:bg-gray-300 transition font-semibold"
               style="font-family:'Merriweather', serif;">
-        Events
+        Events &amp; Meetups
       </button>
-      <button data-key="volunteering"
-              class="px-4 py-2 rounded-lg border border-blue-200 bg-blue-100 text-blue-700 hover:bg-blue-200 transition font-semibold"
+      <button data-key="workshops"
+              class="px-4 py-2 rounded-lg border border-gray-300 bg-gray-200 text-gray-800 hover:bg-gray-300 transition font-semibold"
               style="font-family:'Merriweather', serif;">
-        Volunteering
+        Workshops &amp; Seminars
       </button>
     </div>
-    <!-- Panel (renders the selected card, inner box stays) -->
+
+    <!-- Panel (renders selected tab) -->
     <div id="communityPanel" class="mt-10"></div>
   </div>
 </section>
 
-<script>
-  // Data for each tab
-  const communityItems = {
-  hackathons: {
-    title: "Hackathons",
-    img: "assets/hackathon_logos_square.png",
-    align: "left",
-    desc1: `
-      <p>I love hackathons because they’re fast, messy, and full of creative sparks. 
-      They push me to think clearly under pressure, prototype overnight, and collaborate with sharp people. Across these, I learned teamwork under pressure, 
-      rapid prototyping, and turning ideas into tangible outcomes.</p>
-
-       <p class="mt-3"><strong>Denver International Airport (DaSSA Hackathon 2024):</strong> Built a Power BI + NLP dashboard for ServiceNow & Azure DevOps; placed 4th overall. <br>
-  <strong>HackCU 2024:</strong> Prototyped an AI-powered microloans approval system, exploring how ML can drive inclusion.<br>
-
-  <strong>T9 MediHack:</strong> Designed healthcare + AI concepts showing how tech can serve real needs.</p>
-    `,
-  },
-    meetups: {
-      title: "Meetups",
-      desc1:
-        "Active participant in local data meetups and Women in Data Science (WiDS) gatherings—learning, sharing, and growing with the community.",
-      desc2:
-        "These sessions helped me connect with mentors and stay current with real-world applications.",
-      img: "assets/meetup.png",
-      align: "right"
-    },
-    fairs: {
-      title: "Fairs",
-      desc1:
-        "Shared projects at CU Boulder Data Science Fairs, discussing design choices, evaluation, and impact with peers and faculty.",
-      desc2:
-        "Highlights included bank marketing analysis and archival digitization work.",
-      img: "assets/fair.png",
-      align: "left"
-    },
-    events: {
-      title: "Events",
-      desc1:
-        "Presented archival tsunami marigram work at CIRES Rendezvous—contributing to preservation and access for research.",
-      desc2:
-        "Experience presenting to broad audiences and answering domain questions.",
-      img: "assets/event.png",
-      align: "right"
-    },
-    volunteering: {
-      title: "Volunteering",
-      desc1:
-        "Supported student/community groups with data cleanup and basic dashboarding—helping teams make sense of their information.",
-      desc2:
-        "Focused on clarity, maintainability, and handoff-ready artifacts.",
-      img: "assets/volunteer.png",
-      align: "left"
-    }
-  };
-
-  // Render helper (image left on desktop, stacks on mobile; text justified)
-// Render helper (no in-card heading; smaller image)
-function renderCommunityCard(key) {
-  const c = communityItems[key];
-  if (!c) return;
-
-const imageBlock = `
-  <div class="w-full md:w-2/5 ${c.align === 'left' ? 'md:pr-6 md:justify-start' : 'md:pl-6 md:justify-end'} 
-              mb-4 md:mb-0 flex items-center justify-center">
-    <img src="${c.img}" alt="${c.title}" 
-         class="w-40 md:w-48 h-auto object-contain" loading="lazy">
+<!-- Modal for "View all hackathons" -->
+<div id="hackModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+  <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8 max-w-5xl w-[95%] relative text-gray-800" style="font-family:'Merriweather', serif;">
+    <button onclick="closeHackModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold">&times;</button>
+    <h3 class="text-2xl md:text-3xl font-bold mb-4" style="font-family:'DM Serif Display', serif;">All Hackathons</h3>
+    <div id="hackModalContent" class="grid grid-cols-1 gap-4 md:gap-5"></div>
   </div>
-`;
+</div>
 
+<script id="community-script">
+(function () {
+  /* ===== fixed panel height: show 2 cards, scroll for the rest ===== */
+  const PANEL_H_TWO = 360;
+  const DEFAULT_HASHNODE = "https://mouks-momentum.hashnode.dev/";
 
+  /* ===== HACKATHONS ===== */
+  const DEN_REPO_URL = "https://github.com/moukthika-gunapaneedu/Denver-International-Airport-Hackathon";
+  const hackathonEntries = [
+  {
+    id: "den",
+    logo: "assets/daasa.jpg",
+    title: "Denver International Airport (DaSSA Hackathon)",
+    date: "Nov 9-10 2024",
+    sortKey: "2024-11-10",
+    link: DEN_REPO_URL,
+    lines: [
+      "Built a Power BI dashboard integrating ServiceNow and Azure DevOps for real-time backlog + SLA visibility.",
+      "Applied NLP themes to auto-categorize incidents, enabling faster triage; delivered an overnight working prototype that earned finalist recognition."
+    ],
+    badges: ["Finalists"]
+  },
+  {
+    id: "hackcu",
+    logo: "assets/hackcu.jpg",
+    title: "HackCU",
+    date: "Mar 1-2 2025",
+    sortKey: "2025-03-02",
+    lines: [
+      "Prototyped an AI-powered microloans approval system with transparent factor weights and risk bands, promoting financial inclusion.",
+      "Focused on explainability so non-technical reviewers could understand loan approval decisions; collaborated in a 36-hour sprint to design, code, and pitch a demo."
+    ]
+  },
+  {
+    id: "t9",
+    logo: "assets/t9.jpg",
+    title: "T9 MediHack",
+    date: "Feb 14-15 2025",
+    sortKey: "2025-02-15",
+    lines: [
+      "Developed a cochlear-implant fitting assistant combining audiogram + QuickSIN data with MAP tuning (T/C levels, channel gains).",
+      "Built a clinician dashboard with before/after audibility plots, improving patient monitoring and highlighting actionable insights."
+    ]
+  }
+];
 
-  // No <h3> title and no <hr>; just the text content
-  const textBlock = `
-    <div class="w-full md:flex-1 text-gray-800" style="font-family:'Merriweather', serif;">
-      <div class="space-y-3 text-justify">
-        ${c.desc1}
-        ${c.desc2}
+  /* ===== EVENTS & MEETUPS ===== */
+  const eventsEntries = [
+    {
+      id: "wids-boulder",
+      logo: "assets/wids.png",
+      title: "Women in Data Science (WiDS) - Boulder",
+      date: "Jul 31 2025",
+      lines: [
+        "Met Shannon (Moran) Yates (Head of Data Science, Gusto), Annie Brinza (Data Science Manager, Code for America), and Katie Colasono (Analytics Specialist, GRP).",
+        "Energizing discussions around practical impact and career paths; left with fresh perspective and next steps."
+      ]
+    },
+    {
+      id: "be-involved",
+      logo: "assets/cub.png",
+      title: "Be Involved Fair - CU Boulder",
+      date: "Aug 27 2025",
+      lines: [
+        "Explored clubs to stay engaged beyond coursework: AI Club, Women of Color in STEM, T9Hacks, SWE, HackCU, and CU Women in Computing.",
+        "Plan: Ship small projects with AI Club; Mentor at T9Hacks/HackCU."
+      ]
+    },
+    {
+      id: "startups2students - CU Boulder",
+      logo: "assets/cub.png",
+      title: "Startups2Students",
+      date: "Sep 3 2025",
+      lines: [
+        "Data/AI-leaning teams I spoke with: Rippey AI (conversational AI for logistics), NoSo Labs (AI agents for field technicians), Rivos (RISC-V server chips for AI & analytics).",
+        "Also met: Faex Health, Zooly Labs, Brain Buffs - strong matches for analytics and ML work."
+      ]
+    }
+  ];
+
+  /* ===== WORKSHOPS & SEMINARS ===== */
+  const workshopsEntries = [
+    {
+      id: "ntdas",
+      logo: "assets/ieee.png",
+      title: "National Transportation Data & Analytics Solution (IEEE) Workshop",
+      date: "Aug 14 2025",
+      lines: [
+        "Hands-on with the National Transportation Data & Analytics Solution: mapping, visualization, deep-dive analysis. Led by Lavanya Sayam, Senior Manager of Data Analytics at IEEE.",
+        "Takeaway: free CU-access platform to widen research scope and prototype transport analytics quickly."
+      ]
+    }
+  ];
+
+  /* ===== helpers ===== */
+  function initialsFromTitle(t) {
+    const parts = (t || "").split(/\s+/).filter(Boolean);
+    return ((parts[0]?.[0] || "") + (parts.at(-1)?.[0] || "")).toUpperCase();
+  }
+
+  /* ===== single card ===== */
+  function listItemHTML(entry) {
+    const logo = entry.logo
+      ? `<img src="${entry.logo}" alt="${entry.title}" class="w-20 h-20 rounded-full object-cover border border-gray-200 shadow-sm bg-white">`
+      : `<div class="w-20 h-20 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-semibold border border-gray-200 shadow-sm">${initialsFromTitle(entry.title)}</div>`;
+
+    const title = entry.link
+      ? `<a href="${entry.link}" target="_blank" rel="noopener" class="inline-flex items-center hover:underline">
+           ${entry.title}<span class="ml-1 text-xs opacity-80">↗</span>
+         </a>`
+      : entry.title;
+
+    const badgesHTML = (entry.badges || []).map((b) => {
+      const cls = /final/i.test(b)
+        ? "bg-green-200 text-green-900 border border-green-400"
+        : "bg-gray-200 text-gray-900 border border-gray-400";
+      return `<span class="px-3 py-1 text-sm font-semibold rounded-full ${cls}">${b}</span>`;
+    }).join("");
+
+    const bullets = (entry.lines || [])
+      .map(l => `<li class="mb-1">${l}</li>`)
+      .join("");
+
+    return `
+      <div class="flex gap-4 p-4 border border-gray-300 rounded-xl bg-white shadow-sm"
+           style="min-height:150px; font-style:normal !important;">
+        <div class="flex-shrink-0">${logo}</div>
+        <div class="flex-1 text-gray-900" style="font-style:normal !important;">
+          <div class="flex items-center flex-wrap gap-2">
+            <h4 class="text-lg font-semibold" style="font-family:'DM Serif Display', serif; font-style:normal !important;">
+              ${title}
+            </h4>
+            ${badgesHTML}
+          </div>
+          <div class="text-sm text-gray-700 mt-0.5" style="font-style:normal !important;">${entry.date || ""}</div>
+          <ul class="mt-2 list-disc pl-5 text-justify leading-relaxed pr-1" style="font-style:normal !important;">
+            ${bullets}
+          </ul>
+        </div>
+      </div>
+    `;
+  }
+
+  /* ===== list renderer with optional bottom CTA ===== */
+  function renderScrollableList(entries, opts = {}) {
+  const { withBottomCTA = false, ctaHref = "https://mouks-momentum.hashnode.dev/", ctaText = "Read more on Hashnode" } = opts;
+  const cards = entries.map(listItemHTML).join("");
+
+  const panelHTML = `
+    <div id="scrollPanel"
+         class="bg-white rounded-2xl w-[95%] mx-auto p-6 shadow-md border border-gray-300 overflow-y-auto"
+         style="height:360px; max-height:360px; font-style:normal !important;">
+      <div class="grid grid-cols-1 gap-3" style="font-style:normal !important;">
+        ${cards}
+        ${withBottomCTA ? `
+  <div id="bottomCTA"
+       class="opacity-0 transform translate-y-1 transition-all duration-300 text-center pt-3 pb-1">
+    <a href="${ctaHref}" target="_blank" rel="noopener" aria-label="${ctaText}"
+       class="cta-ghost">
+      <img src="https://cdn.simpleicons.org/hashnode/111827" alt="" aria-hidden="true"
+           class="w-4 h-4 cta-mark">
+      <span>${ctaText}</span>
+      <i class="fas fa-arrow-right text-xs cta-icon" aria-hidden="true"></i>
+    </a>
+  </div>` : ``}
       </div>
     </div>
   `;
 
-  const content = `
-    <div class="bg-white rounded-2xl w-[95%] mx-auto flex flex-col md:flex-row p-6 shadow-md border border-gray-300">
-      ${c.align === 'left' ? imageBlock + textBlock : textBlock + imageBlock}
-    </div>
-  `;
+  const panel = document.getElementById("communityPanel");
+  panel.innerHTML = panelHTML;
 
-  document.getElementById("communityPanel").innerHTML = content;
+  if (withBottomCTA) {
+    const sp  = document.getElementById("scrollPanel");
+    const cta = document.getElementById("bottomCTA");
+    const toggleCTA = () => {
+      const nearBottom = sp.scrollTop + sp.clientHeight >= sp.scrollHeight - 6;
+      cta.classList.toggle("opacity-0", !nearBottom);
+      cta.classList.toggle("translate-y-1", !nearBottom);
+      cta.classList.toggle("opacity-100", nearBottom);
+      cta.classList.toggle("translate-y-0", nearBottom);
+    };
+    toggleCTA();
+    sp.addEventListener("scroll", toggleCTA, { passive: true });
+  }
 }
 
+  /* ===== renderers ===== */
+  function renderHackathons() { renderScrollableList(hackathonEntries); }
+  function renderEvents()    { renderScrollableList(eventsEntries,   { withBottomCTA: true }); }
+  function renderWorkshops() { renderScrollableList(workshopsEntries,{ withBottomCTA: true }); }
 
+  /* ===== tabs hookup ===== */
+  function setActive(btn) {
+    const tabs = document.getElementById("communityTabs");
+    [...tabs.querySelectorAll("button[data-key]")].forEach(b => {
+      b.classList.remove("bg-black","text-white","hover:bg-gray-900");
+      b.classList.add("bg-gray-200","text-gray-800","hover:bg-gray-300");
+    });
+    btn.classList.remove("bg-gray-200","text-gray-800","hover:bg-gray-300");
+    btn.classList.add("bg-black","text-white","hover:bg-gray-900");
+  }
 
-  // Tabs behavior
-  const tabs = document.getElementById("communityTabs");
-  tabs.addEventListener("click", (e) => {
+  const tabsEl = document.getElementById("communityTabs");
+  tabsEl.addEventListener("click", (e) => {
     const btn = e.target.closest("button[data-key]");
     if (!btn) return;
-    [...tabs.querySelectorAll("button[data-key]")].forEach(b => {
-      b.classList.remove("bg-blue-600","text-white","hover:bg-blue-700");
-      b.classList.add("bg-blue-100","text-blue-700","hover:bg-blue-200");
-    });
-    btn.classList.remove("bg-blue-100","text-blue-700","hover:bg-blue-200");
-    btn.classList.add("bg-blue-600","text-white","hover:bg-blue-700");
-    renderCommunityCard(btn.dataset.key);
+    setActive(btn);
+    const key = btn.dataset.key;
+    if (key === "hackathons") renderHackathons();
+    else if (key === "events") renderEvents();
+    else if (key === "workshops") renderWorkshops();
   });
 
-  // Initial render (image left, text right)
-  renderCommunityCard("hackathons");
+  /* initial render */
+  renderHackathons();
+})();
 </script>
+
+
 
 
 
@@ -789,7 +948,7 @@ const imageBlock = `
   </a>
 
   <!-- Hashnode (official icon via Simple Icons CDN) -->
-  <a href="https://hashnode.com/@moukthikagunapaneedu" target="_blank" rel="noopener" class="transition opacity-80 hover:opacity-100">
+  <a href="https://mouks-momentum.hashnode.dev/?source=top_nav_blog_home" target="_blank" rel="noopener" class="transition opacity-80 hover:opacity-100">
     <img
       src="https://cdn.simpleicons.org/hashnode/000000"
       alt="Hashnode"
@@ -1049,8 +1208,8 @@ const imageBlock = `
       tsunami data remains accessible for future analysis.</p>
     `
   },
-  meetups: {
-    title: "Meetups",
+  events: {
+    title: "Events",
     img: "assets/meetup.png",
     desc: `
       <p class="mb-3">I actively participated in <strong>Women in Data Science (WiDS)</strong> 
@@ -1124,7 +1283,7 @@ function closeCommunityModal() {
 <a href="#learning" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Learning">
   <i class="fas fa-book-open"></i>
 </a>
-<a href="#community" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Community">
+<a href="#community" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Growth">
   <i class="fas fa-users"></i>
 </a>
 <a href="#cta" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Contact">
