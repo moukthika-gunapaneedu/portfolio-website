@@ -573,7 +573,12 @@
             <!-- Content -->
             <div class="space-y-6 text-[1.05rem] text-gray-800 leading-8 text-justify" style="font-family: 'Merriweather', serif;">
               <p>
-                I'm currently in my second year of <strong>Master's in Data Science</strong> program at the 
+                I'm currently in my second year of <button type="button"
+        class="font-bold underline decoration-gray-400 hover:decoration-black underline-offset-2 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded"
+        onclick="openCoursework()"
+        aria-haspopup="dialog" aria-controls="courseworkModal">
+  Master’s in Data Science
+</button> program at the 
                 <a href="https://www.colorado.edu/" target="_blank" rel="noopener" class="font-bold hover:underline transition duration-200">
                   University of Colorado Boulder
                 </a> - Sko Buffs!
@@ -596,6 +601,28 @@
                 There’s still a long way to go, and honestly, I’m excited for whatever's next.
               </p>
             </div>
+
+            <!-- Coursework Modal -->
+              <div id="courseworkModal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="cwTitle">
+                <!-- backdrop -->
+                <div class="absolute inset-0 bg-black bg-opacity-40" onclick="closeCoursework()"></div>
+
+                <!-- card -->
+                <div class="relative mx-auto my-12 max-w-2xl w-[92%] bg-white rounded-2xl shadow-2xl border border-gray-200 p-6">
+                  <button onclick="closeCoursework()"
+                          class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold"
+                          aria-label="Close">&times;</button>
+
+                  <h3 id="cwTitle" class="text-2xl font-bold mb-1" style="font-family:'DM Serif Display', serif;">
+                    M.S. in Data Science — Coursework
+                  </h3>
+                  <p class="text-sm text-gray-600 mb-4" style="font-family:'Merriweather', serif;">
+                    Selected courses I’ve completed.
+                  </p>
+
+                  <div id="cwBody" class="space-y-5"></div>
+                </div>
+              </div>
 
           </div>
         </section>
@@ -674,7 +701,7 @@
     sortKey: "2025-03-02",
     lines: [
       "Prototyped an AI-powered microloans approval system with transparent factor weights and risk bands, promoting financial inclusion.",
-      "Focused on explainability so non-technical reviewers could understand loan approval decisions; collaborated in a 36-hour sprint to design, code, and pitch a demo."
+      "Focused on explainability so non-technical reviewers could understand loan approval decisions; collaborated in a 24-hour sprint to design, code, and pitch a demo."
     ]
   },
   {
@@ -1171,54 +1198,7 @@
 
   function closeModal() {
     document.getElementById("jobModal").classList.add("hidden");
-  }
-
-  const communityData = {
-  hackathons: {
-    title: "Hackathons",
-    img: "assets/hackathon.png", // replace with actual image
-    desc: `
-      <p class="mb-3">I participated in <strong>Invented</strong> where we built a predictive model 
-      to optimize campus resource usage (study spaces, libraries, etc.).</p>
-      <p class="mb-3">At <strong>MicroWise</strong>, part of the AMD AI PC Hackathon, 
-      our team designed an AI-powered microloan approval system. 
-      I worked on the ML recommendation module to match applicants to lending criteria.</p>
-      <p>These events honed my skills in rapid prototyping, collaboration, and pitching ideas under pressure.</p>
-    `
-  },
-  workshops: {
-    title: "Workshops & Fairs",
-    img: "assets/workshop.png",
-    desc: `
-      <p class="mb-3">At CU Boulder Data Science Fairs, I showcased projects like 
-      <strong>BankIntel</strong> and the <strong>Tsunami Marigram Archive</strong>, 
-      engaging in discussions on ethics, big data, and visualization methods.</p>
-      <p>I also attended <strong>focus group workshops</strong> on applying chi-square 
-      tests and ANOVA in real-world contexts, broadening my statistical toolkit.</p>
-    `
-  },
-  events: {
-    title: "Community Events",
-    img: "assets/event.png",
-    desc: `
-      <p class="mb-3">At the <strong>CIRES Rendezvous</strong>, I presented 
-      tsunami marigram archival research, highlighting methods for digitizing 
-      and preserving NOAA microfilm records.</p>
-      <p>This contribution supports global disaster research, ensuring historical 
-      tsunami data remains accessible for future analysis.</p>
-    `
-  },
-  events: {
-    title: "Events",
-    img: "assets/meetup.png",
-    desc: `
-      <p class="mb-3">I actively participated in <strong>Women in Data Science (WiDS)</strong> 
-      meetups, connecting with professionals and peers in AI and data.</p>
-      <p>These meetups emphasized diversity, inclusion, and mentorship, while also 
-      exposing me to cutting-edge applications of machine learning and AI.</p>
-    `
-  }
-};
+  };
 
 function openCommunityModal(key) {
   const data = communityData[key];
