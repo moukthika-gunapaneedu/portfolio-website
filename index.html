@@ -341,6 +341,19 @@
   height: 0.875rem;
 }
 
+.text-link{
+  color:#1d4ed8;            /* blue-600 */
+  font-weight:600;
+  text-decoration:none;
+  border-bottom:1px dashed transparent;
+  transition:color .2s ease, border-bottom .2s ease;
+}
+.text-link:hover{
+  color:#0f172a;            /* slate-900 */
+  border-bottom:1px dashed #1d4ed8;
+  cursor:pointer;
+}
+
   </style>
 
 </head>
@@ -573,12 +586,9 @@
             <!-- Content -->
             <div class="space-y-6 text-[1.05rem] text-gray-800 leading-8 text-justify" style="font-family: 'Merriweather', serif;">
               <p>
-                I'm currently in my second year of <button type="button"
-        class="font-bold underline decoration-gray-400 hover:decoration-black underline-offset-2 focus:outline-none focus:ring-2 focus:ring-gray-400 rounded"
-        onclick="openCoursework()"
-        aria-haspopup="dialog" aria-controls="courseworkModal">
+                I'm currently in my second year of <a href="#" class="text-link" onclick="openCoursework(); return false;">
   Master’s in Data Science
-</button> program at the 
+</a> program at the 
                 <a href="https://www.colorado.edu/" target="_blank" rel="noopener" class="font-bold hover:underline transition duration-200">
                   University of Colorado Boulder
                 </a> - Sko Buffs!
@@ -591,8 +601,11 @@
 
               <p>
                 I’m a quick learner and tend to pick things up fast, especially when I can break them down in my own way. YouTube has honestly been one of my favorite (and most underrated) teachers. I’ve also completed 
-                <a href="https://drive.google.com/drive/folders/1js2TrPJz5Gws6HzUzJpXfzHYkh5rQH5-?usp=sharing" target="_blank" rel="noopener" class="font-bold hover:underline transition duration-200">
-                  certifications</a> from places like <strong>Google</strong>, <strong>Stanford</strong>, and <strong>Harvard</strong> that genuinely helped me build my understanding.
+               <a href="https://drive.google.com/drive/folders/1js2TrPJz5Gws6HzUzJpXfzHYkh5rQH5-?usp=sharing"
+   target="_blank" rel="noopener"
+   class="text-link">
+  certifications
+</a> from places like <strong>Google</strong>, <strong>Stanford</strong>, and <strong>Harvard</strong> that genuinely helped me build my understanding.
               </p>
 
               <p>
@@ -602,29 +615,60 @@
               </p>
             </div>
 
-            <!-- Coursework Modal -->
-              <div id="courseworkModal" class="fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-labelledby="cwTitle">
-                <!-- backdrop -->
-                <div class="absolute inset-0 bg-black bg-opacity-40" onclick="closeCoursework()"></div>
+<!-- ==== Coursework Modal (Centered) ==== -->
+<div id="courseworkModal" 
+     class="fixed inset-0 z-50 hidden flex items-center justify-center" 
+     role="dialog" aria-modal="true" aria-labelledby="cwTitle">
 
-                <!-- card -->
-                <div class="relative mx-auto my-12 max-w-2xl w-[92%] bg-white rounded-2xl shadow-2xl border border-gray-200 p-6">
-                  <button onclick="closeCoursework()"
-                          class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold"
-                          aria-label="Close">&times;</button>
+  <!-- backdrop -->
+  <div class="absolute inset-0 bg-black bg-opacity-40" onclick="closeCoursework()"></div>
 
-                  <h3 id="cwTitle" class="text-2xl font-bold mb-1" style="font-family:'DM Serif Display', serif;">
-                    M.S. in Data Science — Coursework
-                  </h3>
-                  <p class="text-sm text-gray-600 mb-4" style="font-family:'Merriweather', serif;">
-                    Selected courses I’ve completed.
-                  </p>
+  <!-- outer card -->
+  <div class="relative max-w-4xl w-[90%] bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 z-10">
+    <button onclick="closeCoursework()"
+            class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold"
+            aria-label="Close">&times;</button>
 
-                  <div id="cwBody" class="space-y-5"></div>
-                </div>
-              </div>
+    <h3 id="cwTitle" class="text-2xl font-bold mb-6 text-center" style="font-family:'DM Serif Display', serif;">
+      M.S. in Data Science - Coursework
+    </h3>
 
-          </div>
+    <!-- fixed 2-row grid -->
+    <div id="cwGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-fr"></div>
+  </div>
+</div>
+
+
+<script>
+const courseworkData = [
+  { code: "CSCI 5612", title: "Machine Learning" },
+  { code: "CSCI 5502", title: "Data Mining" },
+  { code: "STAT 5010", title: "Statistics and Applications" },
+  { code: "ATLS 5214", title: "Big Data Architecture" },
+  { code: "CSCI 5122", title: "Neural Networks and Deep Learning" },
+  { code: "CSCI 5832", title: "Natural Language Processing" },
+  { code: "INFO 5602", title: "Information Visualization" },
+  { code: "DTSC 5302", title: "Ethical Issues in Data Science" },
+  { code: "DTSC 5303", title: "Cybersecurity for Data Science" }
+];
+
+function buildCourseCard({code, title}) {
+  return `
+    <div class="border border-gray-200 rounded-xl p-4 bg-white shadow-sm flex flex-col items-center justify-center text-center h-full">
+      <h4 class="text-base font-bold mb-1" style="font-family:'DM Serif Display', serif;">${title}</h4>
+      <p class="text-gray-600 text-sm" style="font-family:'Merriweather', serif;">${code}</p>
+    </div>
+  `;
+}
+
+function openCoursework() {
+  document.getElementById("cwGrid").innerHTML = courseworkData.map(buildCourseCard).join("");
+  document.getElementById("courseworkModal").classList.remove("hidden");
+}
+function closeCoursework() {
+  document.getElementById("courseworkModal").classList.add("hidden");
+}
+</script>
         </section>
 
 
@@ -762,7 +806,17 @@
         "Hands-on with the National Transportation Data & Analytics Solution: mapping, visualization, deep-dive analysis. Led by Lavanya Sayam, Senior Manager of Data Analytics at IEEE.",
         "Takeaway: free CU-access platform to widen research scope and prototype transport analytics quickly."
       ]
-    }
+    },
+    {
+  id: "lakefusion-mdm",
+  logo: "assets/databricks.png",  
+  title: "Modernizing Master Data Management (MDM) across State and Local Agencies",
+  date: "Sep 9 2025",
+  lines: [
+    "Explored how the AI-powered Databricks MDM solution 'LakeFusion' automates MDM tasks for government agencies and use cases for Person, Legal Entity, and Location domains.",
+    "Topics included: defining MDM, ensuring a single source of truth, automating cleansing, matching, standardization, and maintaining clear data lineage."
+  ]
+}
   ];
 
   /* ===== helpers ===== */
@@ -1045,14 +1099,6 @@
       }, 2500);
     }, 1600);
 
-    function scrollToNext() {
-      const sections = document.querySelectorAll("main section");
-      const scrollX = window.scrollX || window.pageXOffset;
-      const currentIndex = Math.round(scrollX / window.innerWidth);
-      const next = sections[currentIndex + 1];
-      if (next) next.scrollIntoView({ behavior: "smooth", inline: "start" });
-    }
-
     const projects = [
     {
       title: "Research Pod",
@@ -1077,6 +1123,16 @@
     img: "assets/doctorvisits.png",
     link: "https://github.com/moukthika-gunapaneedu/doctor-visits-analysis",
     readMore: "https://github.com/moukthika-gunapaneedu/doctor-visits-analysis/blob/main/DoctorVisits_Analysis.ipynb"
+  },
+   {
+    title: "Tsunami Marigram Extractor",
+    desc1:
+      "This project focuses on digitizing and structuring historical tsunami marigrams stored as high-resolution TIFF images. Using Python, Tesseract OCR, and OpenCV, it extracts key metadata such as station name, location, date, event ID, and scale values, converting previously unstructured data into searchable CSV and JSON formats.",
+    desc2:
+      "Beyond text extraction, the system incorporates perceptual-hash deduplication to eliminate redundant images and normalizes date and location fields for consistency. These pipelines were built to support CU Boulder Libraries and NOAA’s archival workflows, making rare historical data accessible to the global research community.",
+    img: "assets/tsunami.png",
+    link: "https://github.com/moukthika-gunapaneedu/Tsunami-Marigram-Metadata-Extractor",
+    readMore: "https://github.com/moukthika-gunapaneedu/Tsunami-Marigram-Metadata-Extractor"
   }
   ];
 
@@ -1272,18 +1328,50 @@ function closeCommunityModal() {
 
 </div>
 
-
 <script>
-  const bottomNav = document.getElementById("bottom-nav");
+(() => {
+  const bottomNav = document.getElementById('bottom-nav');
+  const landingSection = document.querySelector('main > section'); // first section
+  let leftLanding = false;
 
-  document.addEventListener("mousemove", (e) => {
-    // Reveal nav when mouse is near bottom (120px zone)
-    if (window.innerHeight - e.clientY < 120) {
-      bottomNav.classList.remove("opacity-0", "translate-y-5");
-    } else {
-      bottomNav.classList.add("opacity-0", "translate-y-5");
-    }
+  const show = () => bottomNav.classList.remove('opacity-0','translate-y-5');
+  const hide = () => bottomNav.classList.add('opacity-0','translate-y-5');
+
+  // 1) Show a beat after the arrow appears on page load (arrow shows ~1.6s in)
+  window.addEventListener('load', () => {
+    setTimeout(show, 3000); // sync with your arrow reveal
   });
+
+  // 2) As soon as we leave the first screen, hide and switch to hover-to-show
+  if ('IntersectionObserver' in window && landingSection) {
+    const io = new IntersectionObserver((entries) => {
+      const e = entries[0];
+      if (!leftLanding && e.intersectionRatio < 0.8) {
+        leftLanding = true;
+        hide();
+        io.disconnect();
+      }
+    }, { threshold: [0, 0.8] });
+    io.observe(landingSection);
+  } else {
+    // Fallback: first non-trivial scroll
+    const onScroll = () => {
+      if (!leftLanding && (window.scrollX > 5 || window.scrollY > 5)) {
+        leftLanding = true;
+        hide();
+        window.removeEventListener('scroll', onScroll);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // 3) After leaving landing, only show when cursor is near the bottom edge
+  document.addEventListener('mousemove', (e) => {
+    if (!leftLanding) return; // keep it shown on landing
+    const nearBottom = (window.innerHeight - e.clientY) < 120;
+    nearBottom ? show() : hide();
+  });
+})();
 </script>
 
 
