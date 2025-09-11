@@ -176,183 +176,181 @@
 
     
     .h-screen { height: auto !important; }
-  }
+    }
 
 
-  img { max-width: 100%; height: auto; }
+      img { max-width: 100%; height: auto; }
 
-  @keyframes nudge {
-  0%, 100% { transform: translateX(0); }
-  50% { transform: translateX(8px); }
-}
+      @keyframes nudge {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(8px); }
+    }
 
-#down-arrow {
-  cursor: pointer;
-  animation: nudge 1.5s infinite;
-}
+    #down-arrow {
+      cursor: pointer;
+      animation: nudge 1.5s infinite;
+    }
 
-.timeline-item { outline: none; }
-.timeline-item:focus-visible .timeline-dot { 
-  border-color: #3b82f6; /* blue-500 */
-  box-shadow: 0 12px 28px rgba(0,0,0,0.18);
-  transform: translateY(-4px) scale(1.06);
-}
+    .timeline-item { outline: none; }
+    .timeline-item:focus-visible .timeline-dot { 
+      border-color: #3b82f6; /* blue-500 */
+      box-shadow: 0 12px 28px rgba(0,0,0,0.18);
+      transform: translateY(-4px) scale(1.06);
+    }
 
-/* Circle base + transitions */
-.timeline-dot {
-  position: relative;
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
-}
+    /* Circle base + transitions */
+    .timeline-dot {
+      position: relative;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
 
-/* Soft glow ring on hover/focus */
-.timeline-dot::after {
-  content: "";
-  position: absolute;
-  inset: -10px;
-  border-radius: 9999px;
-  border: 3px solid rgba(59,130,246,0); /* transparent blue-500 */
-  transform: scale(.95);
-  opacity: 0;
-  transition: opacity .25s ease, transform .25s ease, border-color .25s ease;
-}
+    /* Soft glow ring on hover/focus */
+    .timeline-dot::after {
+      content: "";
+      position: absolute;
+      inset: -10px;
+      border-radius: 9999px;
+      border: 3px solid rgba(59,130,246,0); /* transparent blue-500 */
+      transform: scale(.95);
+      opacity: 0;
+      transition: opacity .25s ease, transform .25s ease, border-color .25s ease;
+    }
 
-/* Subtle highlight sheen */
-.timeline-dot::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(120px 120px at 25% 20%, rgba(255,255,255,.55), transparent 60%);
-  opacity: 0;
-  transition: opacity .25s ease;
-}
+    /* Subtle highlight sheen */
+    .timeline-dot::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: radial-gradient(120px 120px at 25% 20%, rgba(255,255,255,.55), transparent 60%);
+      opacity: 0;
+      transition: opacity .25s ease;
+    }
 
-/* Hover state (mouse) */
-.timeline-item.group:hover .timeline-dot {
-  border-color: #595f69; /* blue-500 */
-  box-shadow: 0 14px 30px rgba(0,0,0,0.16);
-  transform: translateY(-4px) scale(1.08);
-}
-.timeline-item.group:hover .timeline-dot::after {
-  border-color: rgba(131, 139, 151, 0.35);
-  opacity: 1;
-  transform: scale(1.05);
-}
-.timeline-item.group:hover .timeline-dot::before {
-  opacity: .65;
-}
+    /* Hover state (mouse) */
+    .timeline-item.group:hover .timeline-dot {
+      border-color: #595f69; /* blue-500 */
+      box-shadow: 0 14px 30px rgba(0,0,0,0.16);
+      transform: translateY(-4px) scale(1.08);
+    }
+    .timeline-item.group:hover .timeline-dot::after {
+      border-color: rgba(131, 139, 151, 0.35);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    .timeline-item.group:hover .timeline-dot::before {
+      opacity: .65;
+    }
 
-/* allow glow to spill out */
-.timeline-scroll { overflow-x: auto; overflow-y: visible; }
-.timeline-row { overflow: visible; }
+    /* allow glow to spill out */
+    .timeline-scroll { overflow-x: auto; overflow-y: visible; }
+    .timeline-row { overflow: visible; }
 
-/* make sure the circle itself doesn't clip pseudo-elements */
-.timeline-item { overflow: visible; }
-.timeline-dot { overflow: visible; position: relative; z-index: 1; }
-.timeline-dot::after, .timeline-dot::before { pointer-events: none; }
+    /* make sure the circle itself doesn't clip pseudo-elements */
+    .timeline-item { overflow: visible; }
+    .timeline-dot { overflow: visible; position: relative; z-index: 1; }
+    .timeline-dot::after, .timeline-dot::before { pointer-events: none; }
 
-#story { overflow: visible; }
-.timeline-scroll { overflow-x: auto; overflow-y: visible; padding-block: 14px; }
-.timeline-row { overflow: visible; position: relative; z-index: 5; }
+    #story { overflow: visible; }
+    .timeline-scroll { overflow-x: auto; overflow-y: visible; padding-block: 14px; }
+    .timeline-row { overflow: visible; position: relative; z-index: 5; }
 
-/* make circles render above nearby elements */
-.timeline-item { overflow: visible; position: relative; z-index: 6; }
-.timeline-dot { overflow: visible; position: relative; z-index: 7; }
+    /* make circles render above nearby elements */
+    .timeline-item { overflow: visible; position: relative; z-index: 6; }
+    .timeline-dot { overflow: visible; position: relative; z-index: 7; }
 
-/* optional: tighten the glow so it needs less space */
-.timeline-dot::after { inset: -8px; }
+    .timeline-dot::after { inset: -8px; }
 
-#story { overflow: visible; }
-.timeline-wrap { position: relative; z-index: 0; }
+    #story { overflow: visible; }
+    .timeline-wrap { position: relative; z-index: 0; }
 
-.timeline-scroll { 
-  overflow-x: auto; 
-  overflow-y: visible; 
-  padding-top: 28px;   /* was 14px */
-  padding-bottom: 12px;
-}
+    .timeline-scroll { 
+      overflow-x: auto; 
+      overflow-y: visible; 
+      padding-top: 28px;   
+      padding-bottom: 12px;
+    }
 
-.timeline-row { overflow: visible; position: relative; z-index: 2; }
-.timeline-item { overflow: visible; position: relative; z-index: 3; }
-.timeline-dot  { overflow: visible; position: relative; z-index: 4; }
+    .timeline-row { overflow: visible; position: relative; z-index: 2; }
+    .timeline-item { overflow: visible; position: relative; z-index: 3; }
+    .timeline-dot  { overflow: visible; position: relative; z-index: 4; }
 
-/* tighter ring + gentler lift so it needs less vertical space */
-.timeline-dot::after { inset: -6px; }          /* was -8 or -10 */
-.timeline-item.group:hover .timeline-dot {
-  transform: translateY(-2px) scale(1.06);     /* was -4px scale(1.08) */
-}
+    .timeline-dot::after { inset: -6px; }         
+    .timeline-item.group:hover .timeline-dot {
+      transform: translateY(-2px) scale(1.06);     
+    }
 
-/* Respect reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  .timeline-dot,
-  .timeline-dot::after,
-  .timeline-dot::before {
-    transition: none;
-  }
-}
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .timeline-dot,
+      .timeline-dot::after,
+      .timeline-dot::before {
+        transition: none;
+      }
+    }
 
-  #community, 
-  #community * { 
-    font-style: normal !important; 
-    font-variant: normal !important;
-  }
-  #community em, 
-  #community i { 
-    font-style: normal !important; 
-  }
+      #community, 
+      #community * { 
+        font-style: normal !important; 
+        font-variant: normal !important;
+      }
+      #community em, 
+      #community i { 
+        font-style: normal !important; 
+      }
 
-  #community {
-  font-family: 'Merriweather', serif;   /* or 'Source Serif 4', serif; */
-  font-style: normal !important;
-}
+      #community {
+      font-family: 'Merriweather', serif;   
+      font-style: normal !important;
+    }
 
-#community .cta-ghost{
-  display:inline-flex; align-items:center; gap:.5rem;
-  padding:.5rem .9rem; border:1px solid #D1D5DB; border-radius:.75rem;
-  background:#fff; color:#1f2937; font-weight:600;
-  box-shadow:0 1px 3px rgba(0,0,0,.05);
-  transition:background-color .25s ease, border-color .25s ease,
-             box-shadow .25s ease, transform .2s ease;
-}
-#community .cta-ghost:hover{
-  background:#f9fafb; border-color:#9CA3AF;
-  box-shadow:0 8px 24px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.05);
-  transform:translateY(-2px);
-}
-#community .cta-ghost:active{
-  transform:translateY(0); box-shadow:0 2px 6px rgba(0,0,0,.06);
-}
-#community .cta-mark, #community .cta-icon{
-  transition:transform .25s ease, opacity .25s ease;
-  opacity:.9;
-}
-#community .cta-ghost:hover .cta-icon{ transform:translateX(4px); opacity:1; }
-#community .cta-ghost:hover .cta-mark{ transform:translateX(-2px); opacity:1; }
+    #community .cta-ghost{
+      display:inline-flex; align-items:center; gap:.5rem;
+      padding:.5rem .9rem; border:1px solid #D1D5DB; border-radius:.75rem;
+      background:#fff; color:#1f2937; font-weight:600;
+      box-shadow:0 1px 3px rgba(0,0,0,.05);
+      transition:background-color .25s ease, border-color .25s ease,
+                box-shadow .25s ease, transform .2s ease;
+    }
+    #community .cta-ghost:hover{
+      background:#f9fafb; border-color:#9CA3AF;
+      box-shadow:0 8px 24px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.05);
+      transform:translateY(-2px);
+    }
+    #community .cta-ghost:active{
+      transform:translateY(0); box-shadow:0 2px 6px rgba(0,0,0,.06);
+    }
+    #community .cta-mark, #community .cta-icon{
+      transition:transform .25s ease, opacity .25s ease;
+      opacity:.9;
+    }
+    #community .cta-ghost:hover .cta-icon{ transform:translateX(4px); opacity:1; }
+    #community .cta-ghost:hover .cta-mark{ transform:translateX(-2px); opacity:1; }
 
-/* smaller CTA text (Events & Workshops bottom button) */
-#community .cta-ghost{
-  font-size: 0.8125rem;            /* ~13px */
-}
-#community .cta-ghost .cta-icon{    /* Font Awesome arrow */
-  font-size: 0.75rem;
-}
-#community .cta-ghost .cta-mark{    /* Hashnode mark */
-  width: 0.875rem;                  /* ~14px */
-  height: 0.875rem;
-}
+    /* smaller CTA text (Events & Workshops bottom button) */
+    #community .cta-ghost{
+      font-size: 0.8125rem;            /* ~13px */
+    }
+    #community .cta-ghost .cta-icon{    /* Font Awesome arrow */
+      font-size: 0.75rem;
+    }
+    #community .cta-ghost .cta-mark{    /* Hashnode mark */
+      width: 0.875rem;                  /* ~14px */
+      height: 0.875rem;
+    }
 
-.text-link{
-  color:#1d4ed8;            /* blue-600 */
-  font-weight:600;
-  text-decoration:none;
-  border-bottom:1px dashed transparent;
-  transition:color .2s ease, border-bottom .2s ease;
-}
-.text-link:hover{
-  color:#0f172a;            /* slate-900 */
-  border-bottom:1px dashed #1d4ed8;
-  cursor:pointer;
-}
+    .text-link{
+      color:#1d4ed8;            /* blue-600 */
+      font-weight:600;
+      text-decoration:none;
+      border-bottom:1px dashed transparent;
+      transition:color .2s ease, border-bottom .2s ease;
+    }
+    .text-link:hover{
+      color:#0f172a;            /* slate-900 */
+      border-bottom:1px dashed #1d4ed8;
+      cursor:pointer;
+    }
 
   </style>
 
@@ -380,9 +378,9 @@
       </div>
 
       <div id="down-arrow" class="text-black text-2xl mt-4 transition-opacity duration-1000 cursor-pointer"
-     onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth', inline: 'start'});">
-  <i class="fas fa-arrow-right"></i>
-</div>
+        onclick="document.getElementById('intro').scrollIntoView({behavior: 'smooth', inline: 'start'});">
+        <i class="fas fa-arrow-right"></i>
+      </div>
 
     </section>
 
@@ -397,12 +395,12 @@
         <a href="https://www.linkedin.com/in/moukthika-gunapaneedu-863460215/" target="_blank" rel="noopener"><i class="fab fa-linkedin-in"></i></a>
         <a href="mailto:moukthikagunapaneedu@gmail.com"><i class="fas fa-envelope"></i></a>
         <a href="https://github.com/moukthika-gunapaneedu" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
-<a href="https://mouks-momentum.hashnode.dev/" target="_blank" rel="noopener">
-  <img src="https://cdn.simpleicons.org/hashnode/000000" 
-       alt="Hashnode" 
-       class="w-5 h-5" 
-       loading="lazy">
-</a>
+        <a href="https://mouks-tech-101.hashnode.dev/" target="_blank" rel="noopener">
+          <img src="https://cdn.simpleicons.org/hashnode/000000" 
+              alt="Hashnode" 
+              class="w-5 h-5" 
+              loading="lazy">
+        </a>
       </div>
     </section>
 
@@ -442,7 +440,7 @@
           &#8250;
         </button>
       </div>
-      </section>
+    </section>
 
       <!-- Tools I Trust Section -->
       <section id="tools" class="full-width bg-white-100 flex justify-center items-center px-10 py-20">
@@ -468,92 +466,89 @@
         </div>
 
         <!-- Timeline with Arrows -->
-<div class="timeline-wrap">
-  <div class="timeline-scroll w-full mt-10">
-  <div class="timeline-row flex items-center justify-center gap-10 px-18" style="min-width:1600px;">
+        <div class="timeline-wrap">
+          <div class="timeline-scroll w-full mt-10">
+          <div class="timeline-row flex items-center justify-center gap-10 px-18" style="min-width:1600px;">
 
-    <!-- MedTourEasy -->
-    <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
-         role="button" tabindex="0" aria-label="Open Data Analyst at MedTourEasy"
-         onclick="openModal('MTE')"
-         onkeydown="if(event.key==='Enter'||event.key===' '){openModal('MTE');}">
-      <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
-                  flex items-center justify-center shadow-lg mb-3">
-        <img src="assets/mte.png" alt="MTE" class="h-10 object-contain" loading="lazy" />
-      </div>
-      <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Analyst</div>
-      <div class="text-sm italic text-gray-700">MedTourEasy</div>
-    </div>
+            <!-- MedTourEasy -->
+            <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
+                role="button" tabindex="0" aria-label="Open Data Analyst at MedTourEasy"
+                onclick="openModal('MTE')"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openModal('MTE');}">
+              <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
+                          flex items-center justify-center shadow-lg mb-3">
+                <img src="assets/mte.png" alt="MTE" class="h-10 object-contain" loading="lazy" />
+              </div>
+              <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Analyst</div>
+              <div class="text-sm italic text-gray-700">MedTourEasy</div>
+            </div>
 
-    <!-- Arrow -->
-    <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
+            <!-- Arrow -->
+            <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
 
-    <!-- ICCW -->
-    <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
-         role="button" tabindex="0" aria-label="Open AI Project Intern at ICCW"
-         onclick="openModal('ICCW')"
-         onkeydown="if(event.key==='Enter'||event.key===' '){openModal('ICCW');}">
-      <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
-                  flex items-center justify-center shadow-lg mb-3">
-        <img src="assets/iccw.png" alt="ICCW" class="h-12 object-contain" loading="lazy" />
-      </div>
-      <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Project Intern</div>
-      <div class="text-sm italic text-gray-700">ICCW</div>
-    </div>
+            <!-- ICCW -->
+            <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
+                role="button" tabindex="0" aria-label="Open AI Project Intern at ICCW"
+                onclick="openModal('ICCW')"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openModal('ICCW');}">
+              <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
+                          flex items-center justify-center shadow-lg mb-3">
+                <img src="assets/iccw.png" alt="ICCW" class="h-12 object-contain" loading="lazy" />
+              </div>
+              <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Project Intern</div>
+              <div class="text-sm italic text-gray-700">ICCW</div>
+            </div>
 
-    <!-- Arrow -->
-    <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
+            <!-- Arrow -->
+            <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
 
-    <!-- Solar Secure -->
-    <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
-         role="button" tabindex="0" aria-label="Open Data Scientist at Solar Secure Solutions"
-         onclick="openModal('SSS')"
-         onkeydown="if(event.key==='Enter'||event.key===' '){openModal('SSS');}">
-      <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
-                  flex items-center justify-center shadow-lg mb-3">
-        <img src="assets/solar.png" alt="Solar Secure" class="h-12 object-contain" loading="lazy" />
-      </div>
-      <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Scientist</div>
-      <div class="text-sm italic text-gray-700">Solar Secure Solutions</div>
-    </div>
+            <!-- Solar Secure -->
+            <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
+                role="button" tabindex="0" aria-label="Open Data Scientist at Solar Secure Solutions"
+                onclick="openModal('SSS')"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openModal('SSS');}">
+              <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
+                          flex items-center justify-center shadow-lg mb-3">
+                <img src="assets/solar.png" alt="Solar Secure" class="h-12 object-contain" loading="lazy" />
+              </div>
+              <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Scientist</div>
+              <div class="text-sm italic text-gray-700">Solar Secure Solutions</div>
+            </div>
 
-    <!-- Arrow -->
-    <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
+            <!-- Arrow -->
+            <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
 
-    <!-- Zenoya -->
-    <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
-         role="button" tabindex="0" aria-label="Open Database Intern at Studio Zenoya"
-         onclick="openModal('ZENOYA')"
-         onkeydown="if(event.key==='Enter'||event.key===' '){openModal('ZENOYA');}">
-      <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
-                  flex items-center justify-center shadow-lg mb-3">
-        <img src="assets/zenoya.png" alt="Zenoya" class="h-10 object-contain" loading="lazy" />
-      </div>
-      <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Database Intern</div>
-      <div class="text-sm italic text-gray-700">Studio Zenoya</div>
-    </div>
+            <!-- Zenoya -->
+            <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
+                role="button" tabindex="0" aria-label="Open Database Intern at Studio Zenoya"
+                onclick="openModal('ZENOYA')"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openModal('ZENOYA');}">
+              <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
+                          flex items-center justify-center shadow-lg mb-3">
+                <img src="assets/zenoya.png" alt="Zenoya" class="h-10 object-contain" loading="lazy" />
+              </div>
+              <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Database Intern</div>
+              <div class="text-sm italic text-gray-700">Studio Zenoya</div>
+            </div>
 
-    <!-- Arrow -->
-    <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
+            <!-- Arrow -->
+            <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
 
-    <!-- CU Boulder -->
-    <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
-         role="button" tabindex="0" aria-label="Open Data Engineer at CU Boulder Libraries"
-         onclick="openModal('CU')"
-         onkeydown="if(event.key==='Enter'||event.key===' '){openModal('CU');}">
-      <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
-                  flex items-center justify-center shadow-lg mb-3">
-        <img src="assets/cu.png" alt="CU" class="h-10 object-contain" loading="lazy" />
-      </div>
-      <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Engineer</div>
-      <div class="text-sm italic text-gray-700">CU Boulder Libraries</div>
-    </div>
-  </div>
-  </div>
-</div>
-
-
-         
+            <!-- CU Boulder -->
+            <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
+                role="button" tabindex="0" aria-label="Open Data Engineer at CU Boulder Libraries"
+                onclick="openModal('CU')"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openModal('CU');}">
+              <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
+                          flex items-center justify-center shadow-lg mb-3">
+                <img src="assets/cu.png" alt="CU" class="h-10 object-contain" loading="lazy" />
+              </div>
+              <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Engineer</div>
+              <div class="text-sm italic text-gray-700">CU Boulder Libraries</div>
+            </div>
+          </div>
+          </div>
+        </div> 
         </section>
 
         <!-- Modal -->
@@ -587,8 +582,8 @@
             <div class="space-y-6 text-[1.05rem] text-gray-800 leading-8 text-justify" style="font-family: 'Merriweather', serif;">
               <p>
                 I'm currently in my second year of <a href="#" class="text-link" onclick="openCoursework(); return false;">
-  Master’s in Data Science
-</a> program at the 
+                Master’s in Data Science
+                </a> program at the 
                 <a href="https://www.colorado.edu/" target="_blank" rel="noopener" class="font-bold hover:underline transition duration-200">
                   University of Colorado Boulder
                 </a> - Sko Buffs!
@@ -601,11 +596,11 @@
 
               <p>
                 I’m a quick learner and tend to pick things up fast, especially when I can break them down in my own way. YouTube has honestly been one of my favorite (and most underrated) teachers. I’ve also completed 
-               <a href="https://drive.google.com/drive/folders/1js2TrPJz5Gws6HzUzJpXfzHYkh5rQH5-?usp=sharing"
-   target="_blank" rel="noopener"
-   class="text-link">
-  certifications
-</a> from places like <strong>Google</strong>, <strong>Stanford</strong>, and <strong>Harvard</strong> that genuinely helped me build my understanding.
+                <a href="https://drive.google.com/drive/folders/1js2TrPJz5Gws6HzUzJpXfzHYkh5rQH5-?usp=sharing"
+                target="_blank" rel="noopener"
+                class="text-link">
+                certifications
+                </a> from places like <strong>Google</strong>, <strong>Stanford</strong>, and <strong>Harvard</strong> that genuinely helped me build my understanding.
               </p>
 
               <p>
@@ -615,454 +610,445 @@
               </p>
             </div>
 
-<!-- ==== Coursework Modal (Centered) ==== -->
-<div id="courseworkModal" 
-     class="fixed inset-0 z-50 hidden flex items-center justify-center" 
-     role="dialog" aria-modal="true" aria-labelledby="cwTitle">
+            <!-- ==== Coursework Modal ==== -->
+            <div id="courseworkModal" 
+                class="fixed inset-0 z-50 hidden flex items-center justify-center" 
+                role="dialog" aria-modal="true" aria-labelledby="cwTitle">
 
-  <!-- backdrop -->
-  <div class="absolute inset-0 bg-black bg-opacity-40" onclick="closeCoursework()"></div>
+              <!-- backdrop -->
+              <div class="absolute inset-0 bg-black bg-opacity-40" onclick="closeCoursework()"></div>
 
-  <!-- outer card -->
-  <div class="relative max-w-4xl w-[90%] bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 z-10">
-    <button onclick="closeCoursework()"
-            class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold"
-            aria-label="Close">&times;</button>
+              <!-- outer card -->
+              <div class="relative max-w-4xl w-[90%] bg-white rounded-2xl shadow-2xl border border-gray-200 p-6 z-10">
+                <button onclick="closeCoursework()"
+                        class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold"
+                        aria-label="Close">&times;</button>
 
-    <h3 id="cwTitle" class="text-2xl font-bold mb-6 text-center" style="font-family:'DM Serif Display', serif;">
-      M.S. in Data Science - Coursework
-    </h3>
+                <h3 id="cwTitle" class="text-2xl font-bold mb-6 text-center" style="font-family:'DM Serif Display', serif;">
+                  M.S. in Data Science - Coursework
+                </h3>
 
-    <!-- fixed 2-row grid -->
-    <div id="cwGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-fr"></div>
-  </div>
-</div>
+                <!-- fixed 2-row grid -->
+                <div id="cwGrid" class="grid grid-cols-2 md:grid-cols-3 gap-4 auto-rows-fr"></div>
+              </div>
+            </div>
 
 
-<script>
-const courseworkData = [
-  { code: "CSCI 5612", title: "Machine Learning" },
-  { code: "CSCI 5502", title: "Data Mining" },
-  { code: "STAT 5010", title: "Statistics and Applications" },
-  { code: "ATLS 5214", title: "Big Data Architecture" },
-  { code: "CSCI 5122", title: "Neural Networks and Deep Learning" },
-  { code: "CSCI 5832", title: "Natural Language Processing" },
-  { code: "INFO 5602", title: "Information Visualization" },
-  { code: "DTSC 5302", title: "Ethical Issues in Data Science" },
-  { code: "DTSC 5303", title: "Cybersecurity for Data Science" }
-];
+            <script>
+            const courseworkData = [
+              { code: "CSCI 5612", title: "Machine Learning" },
+              { code: "CSCI 5502", title: "Data Mining" },
+              { code: "STAT 5010", title: "Statistics and Applications" },
+              { code: "ATLS 5214", title: "Big Data Architecture" },
+              { code: "CSCI 5122", title: "Neural Networks and Deep Learning" },
+              { code: "CSCI 5832", title: "Natural Language Processing" },
+              { code: "INFO 5602", title: "Information Visualization" },
+              { code: "DTSC 5302", title: "Ethical Issues in Data Science" },
+              { code: "DTSC 5303", title: "Cybersecurity for Data Science" }
+            ];
 
-function buildCourseCard({code, title}) {
-  return `
-    <div class="border border-gray-200 rounded-xl p-4 bg-white shadow-sm flex flex-col items-center justify-center text-center h-full">
-      <h4 class="text-base font-bold mb-1" style="font-family:'DM Serif Display', serif;">${title}</h4>
-      <p class="text-gray-600 text-sm" style="font-family:'Merriweather', serif;">${code}</p>
-    </div>
-  `;
-}
+            function buildCourseCard({code, title}) {
+              return `
+                <div class="border border-gray-200 rounded-xl p-4 bg-white shadow-sm flex flex-col items-center justify-center text-center h-full">
+                  <h4 class="text-base font-bold mb-1" style="font-family:'DM Serif Display', serif;">${title}</h4>
+                  <p class="text-gray-600 text-sm" style="font-family:'Merriweather', serif;">${code}</p>
+                </div>
+              `;
+            }
 
-function openCoursework() {
-  document.getElementById("cwGrid").innerHTML = courseworkData.map(buildCourseCard).join("");
-  document.getElementById("courseworkModal").classList.remove("hidden");
-}
-function closeCoursework() {
-  document.getElementById("courseworkModal").classList.add("hidden");
-}
-</script>
+            function openCoursework() {
+              document.getElementById("cwGrid").innerHTML = courseworkData.map(buildCourseCard).join("");
+              document.getElementById("courseworkModal").classList.remove("hidden");
+            }
+            function closeCoursework() {
+              document.getElementById("courseworkModal").classList.add("hidden");
+            }
+            </script>
         </section>
 
 
-<!-- ===================== Growth & Momentum ===================== -->
-<section id="community" class="full-width bg-gray-100 flex justify-center items-center py-24 px-6">
-  <div class="p-10 max-w-6xl w-full">
-    <!-- Heading -->
-    <div class="text-center">
-      <h2 class="text-4xl md:text-5xl font-bold" style="font-family:'DM Serif Display', serif;">
-        Growth &amp; Momentum
-      </h2>
-    </div>
+        <!-- ===================== Growth & Momentum ===================== -->
+        <section id="community" class="full-width bg-gray-100 flex justify-center items-center py-24 px-6">
+          <div class="p-10 max-w-6xl w-full">
+            <!-- Heading -->
+            <div class="text-center">
+              <h2 class="text-4xl md:text-5xl font-bold" style="font-family:'DM Serif Display', serif;">
+                Growth &amp; Momentum
+              </h2>
+            </div>
 
-    <!-- Tabs -->
-    <div id="communityTabs" class="mt-8 flex flex-wrap items-center justify-center gap-3">
-      <button data-key="hackathons"
-              class="px-4 py-2 rounded-lg border border-gray-300 bg-black text-white hover:bg-gray-900 transition font-semibold"
-              style="font-family:'Merriweather', serif;">
-        Hackathons
-      </button>
-      <button data-key="events"
-              class="px-4 py-2 rounded-lg border border-gray-300 bg-gray-200 text-gray-800 hover:bg-gray-300 transition font-semibold"
-              style="font-family:'Merriweather', serif;">
-        Events &amp; Meetups
-      </button>
-      <button data-key="workshops"
-              class="px-4 py-2 rounded-lg border border-gray-300 bg-gray-200 text-gray-800 hover:bg-gray-300 transition font-semibold"
-              style="font-family:'Merriweather', serif;">
-        Workshops &amp; Seminars
-      </button>
-    </div>
+            <!-- Tabs -->
+            <div id="communityTabs" class="mt-8 flex flex-wrap items-center justify-center gap-3">
+              <button data-key="hackathons"
+                      class="px-4 py-2 rounded-lg border border-gray-300 bg-black text-white hover:bg-gray-900 transition font-semibold"
+                      style="font-family:'Merriweather', serif;">
+                Hackathons
+              </button>
+              <button data-key="events"
+                      class="px-4 py-2 rounded-lg border border-gray-300 bg-gray-200 text-gray-800 hover:bg-gray-300 transition font-semibold"
+                      style="font-family:'Merriweather', serif;">
+                Events &amp; Meetups
+              </button>
+              <button data-key="workshops"
+                      class="px-4 py-2 rounded-lg border border-gray-300 bg-gray-200 text-gray-800 hover:bg-gray-300 transition font-semibold"
+                      style="font-family:'Merriweather', serif;">
+                Workshops &amp; Seminars
+              </button>
+            </div>
 
-    <!-- Panel (renders selected tab) -->
-    <div id="communityPanel" class="mt-10"></div>
-  </div>
-</section>
-
-<!-- Modal for "View all hackathons" -->
-<div id="hackModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-  <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8 max-w-5xl w-[95%] relative text-gray-800" style="font-family:'Merriweather', serif;">
-    <button onclick="closeHackModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold">&times;</button>
-    <h3 class="text-2xl md:text-3xl font-bold mb-4" style="font-family:'DM Serif Display', serif;">All Hackathons</h3>
-    <div id="hackModalContent" class="grid grid-cols-1 gap-4 md:gap-5"></div>
-  </div>
-</div>
-
-<script id="community-script">
-(function () {
-  /* ===== fixed panel height: show 2 cards, scroll for the rest ===== */
-  const PANEL_H_TWO = 360;
-  const DEFAULT_HASHNODE = "https://mouks-momentum.hashnode.dev/";
-
-  /* ===== HACKATHONS ===== */
-  const DEN_REPO_URL = "https://github.com/moukthika-gunapaneedu/Denver-International-Airport-Hackathon";
-  const hackathonEntries = [
-  {
-    id: "den",
-    logo: "assets/daasa.jpg",
-    title: "Denver International Airport (DaSSA Hackathon)",
-    date: "Nov 9-10 2024",
-    sortKey: "2024-11-10",
-    link: DEN_REPO_URL,
-    lines: [
-      "Built a Power BI dashboard integrating ServiceNow and Azure DevOps for real-time backlog + SLA visibility.",
-      "Applied NLP themes to auto-categorize incidents, enabling faster triage; delivered an overnight working prototype that earned finalist recognition."
-    ],
-    badges: ["Finalists"]
-  },
-  {
-    id: "hackcu",
-    logo: "assets/hackcu.jpg",
-    title: "HackCU",
-    date: "Mar 1-2 2025",
-    sortKey: "2025-03-02",
-    lines: [
-      "Prototyped an AI-powered microloans approval system with transparent factor weights and risk bands, promoting financial inclusion.",
-      "Focused on explainability so non-technical reviewers could understand loan approval decisions; collaborated in a 24-hour sprint to design, code, and pitch a demo."
-    ]
-  },
-  {
-    id: "t9",
-    logo: "assets/t9.jpg",
-    title: "T9 MediHack",
-    date: "Feb 14-15 2025",
-    sortKey: "2025-02-15",
-    lines: [
-      "Developed a cochlear-implant fitting assistant combining audiogram + QuickSIN data with MAP tuning (T/C levels, channel gains).",
-      "Built a clinician dashboard with before/after audibility plots, improving patient monitoring and highlighting actionable insights."
-    ]
-  }
-];
-
-  /* ===== EVENTS & MEETUPS ===== */
-  const eventsEntries = [
-    {
-      id: "wids-boulder",
-      logo: "assets/wids.png",
-      title: "Women in Data Science (WiDS) - Boulder",
-      date: "Jul 31 2025",
-      lines: [
-        "Met Shannon (Moran) Yates (Head of Data Science, Gusto), Annie Brinza (Data Science Manager, Code for America), and Katie Colasono (Analytics Specialist, GRP).",
-        "Energizing discussions around practical impact and career paths; left with fresh perspective and next steps."
-      ]
-    },
-    {
-      id: "be-involved",
-      logo: "assets/cub.png",
-      title: "Be Involved Fair - CU Boulder",
-      date: "Aug 27 2025",
-      lines: [
-        "Explored clubs to stay engaged beyond coursework: AI Club, Women of Color in STEM, T9Hacks, SWE, HackCU, and CU Women in Computing.",
-        "Plan: Ship small projects with AI Club; Mentor at T9Hacks/HackCU."
-      ]
-    },
-    {
-      id: "startups2students - CU Boulder",
-      logo: "assets/cub.png",
-      title: "Startups2Students",
-      date: "Sep 3 2025",
-      lines: [
-        "Data/AI-leaning teams I spoke with: Rippey AI (conversational AI for logistics), NoSo Labs (AI agents for field technicians), Rivos (RISC-V server chips for AI & analytics).",
-        "Also met: Faex Health, Zooly Labs, Brain Buffs - strong matches for analytics and ML work."
-      ]
-    }
-  ];
-
-  /* ===== WORKSHOPS & SEMINARS ===== */
-  const workshopsEntries = [
-    {
-      id: "ntdas",
-      logo: "assets/ieee.png",
-      title: "National Transportation Data & Analytics Solution (IEEE) Workshop",
-      date: "Aug 14 2025",
-      lines: [
-        "Hands-on with the National Transportation Data & Analytics Solution: mapping, visualization, deep-dive analysis. Led by Lavanya Sayam, Senior Manager of Data Analytics at IEEE.",
-        "Takeaway: free CU-access platform to widen research scope and prototype transport analytics quickly."
-      ]
-    },
-    {
-  id: "lakefusion-mdm",
-  logo: "assets/databricks.png",  
-  title: "Modernizing Master Data Management (MDM) across State and Local Agencies",
-  date: "Sep 9 2025",
-  lines: [
-    "Explored how the AI-powered Databricks MDM solution 'LakeFusion' automates MDM tasks for government agencies and use cases for Person, Legal Entity, and Location domains.",
-    "Topics included: defining MDM, ensuring a single source of truth, automating cleansing, matching, standardization, and maintaining clear data lineage."
-  ]
-}
-  ];
-
-  /* ===== helpers ===== */
-  function initialsFromTitle(t) {
-    const parts = (t || "").split(/\s+/).filter(Boolean);
-    return ((parts[0]?.[0] || "") + (parts.at(-1)?.[0] || "")).toUpperCase();
-  }
-
-  /* ===== single card ===== */
-  function listItemHTML(entry) {
-    const logo = entry.logo
-      ? `<img src="${entry.logo}" alt="${entry.title}" class="w-20 h-20 rounded-full object-cover border border-gray-200 shadow-sm bg-white">`
-      : `<div class="w-20 h-20 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-semibold border border-gray-200 shadow-sm">${initialsFromTitle(entry.title)}</div>`;
-
-    const title = entry.link
-      ? `<a href="${entry.link}" target="_blank" rel="noopener" class="inline-flex items-center hover:underline">
-           ${entry.title}<span class="ml-1 text-xs opacity-80">↗</span>
-         </a>`
-      : entry.title;
-
-    const badgesHTML = (entry.badges || []).map((b) => {
-      const cls = /final/i.test(b)
-        ? "bg-green-200 text-green-900 border border-green-400"
-        : "bg-gray-200 text-gray-900 border border-gray-400";
-      return `<span class="px-3 py-1 text-sm font-semibold rounded-full ${cls}">${b}</span>`;
-    }).join("");
-
-    const bullets = (entry.lines || [])
-      .map(l => `<li class="mb-1">${l}</li>`)
-      .join("");
-
-    return `
-      <div class="flex gap-4 p-4 border border-gray-300 rounded-xl bg-white shadow-sm"
-           style="min-height:150px; font-style:normal !important;">
-        <div class="flex-shrink-0">${logo}</div>
-        <div class="flex-1 text-gray-900" style="font-style:normal !important;">
-          <div class="flex items-center flex-wrap gap-2">
-            <h4 class="text-lg font-semibold" style="font-family:'DM Serif Display', serif; font-style:normal !important;">
-              ${title}
-            </h4>
-            ${badgesHTML}
+            <!-- Panel -->
+            <div id="communityPanel" class="mt-10"></div>
           </div>
-          <div class="text-sm text-gray-700 mt-0.5" style="font-style:normal !important;">${entry.date || ""}</div>
-          <ul class="mt-2 list-disc pl-5 text-justify leading-relaxed pr-1" style="font-style:normal !important;">
-            ${bullets}
-          </ul>
+        </section>
+
+        <!-- Modal for "View all hackathons" -->
+        <div id="hackModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+          <div class="bg-white rounded-xl shadow-2xl p-6 md:p-8 max-w-5xl w-[95%] relative text-gray-800" style="font-family:'Merriweather', serif;">
+            <button onclick="closeHackModal()" class="absolute top-4 right-4 text-gray-500 hover:text-black text-2xl leading-none font-bold">&times;</button>
+            <h3 class="text-2xl md:text-3xl font-bold mb-4" style="font-family:'DM Serif Display', serif;">All Hackathons</h3>
+            <div id="hackModalContent" class="grid grid-cols-1 gap-4 md:gap-5"></div>
+          </div>
         </div>
-      </div>
-    `;
-  }
 
-  /* ===== list renderer with optional bottom CTA ===== */
-  function renderScrollableList(entries, opts = {}) {
-  const { withBottomCTA = false, ctaHref = "https://mouks-momentum.hashnode.dev/", ctaText = "Read more on Hashnode" } = opts;
-  const cards = entries.map(listItemHTML).join("");
+        <script id="community-script">
+        (function () {
+          /* ===== fixed panel height: show 2 cards, scroll for the rest ===== */
+          const PANEL_H_TWO = 360;
+          const DEFAULT_HASHNODE = "https://mouks-momentum.hashnode.dev/";
 
-  const panelHTML = `
-    <div id="scrollPanel"
-         class="bg-white rounded-2xl w-[95%] mx-auto p-6 shadow-md border border-gray-300 overflow-y-auto"
-         style="height:360px; max-height:360px; font-style:normal !important;">
-      <div class="grid grid-cols-1 gap-3" style="font-style:normal !important;">
-        ${cards}
-        ${withBottomCTA ? `
-  <div id="bottomCTA"
-       class="opacity-0 transform translate-y-1 transition-all duration-300 text-center pt-3 pb-1">
-    <a href="${ctaHref}" target="_blank" rel="noopener" aria-label="${ctaText}"
-       class="cta-ghost">
-      <img src="https://cdn.simpleicons.org/hashnode/111827" alt="" aria-hidden="true"
-           class="w-4 h-4 cta-mark">
-      <span>${ctaText}</span>
-      <i class="fas fa-arrow-right text-xs cta-icon" aria-hidden="true"></i>
-    </a>
-  </div>` : ``}
-      </div>
-    </div>
-  `;
+          /* ===== HACKATHONS ===== */
+          const DEN_REPO_URL = "https://github.com/moukthika-gunapaneedu/Denver-International-Airport-Hackathon";
+          const hackathonEntries = [
+          {
+            id: "den",
+            logo: "assets/daasa.jpg",
+            title: "Denver International Airport (DaSSA Hackathon)",
+            date: "Nov 9-10 2024",
+            sortKey: "2024-11-10",
+            link: DEN_REPO_URL,
+            lines: [
+              "Built a Power BI dashboard integrating ServiceNow and Azure DevOps for real-time backlog + SLA visibility.",
+              "Applied NLP themes to auto-categorize incidents, enabling faster triage; delivered an overnight working prototype that earned finalist recognition."
+            ],
+            badges: ["Finalists"]
+          },
+          {
+            id: "hackcu",
+            logo: "assets/hackcu.jpg",
+            title: "HackCU",
+            date: "Mar 1-2 2025",
+            sortKey: "2025-03-02",
+            lines: [
+              "Prototyped an AI-powered microloans approval system with transparent factor weights and risk bands, promoting financial inclusion.",
+              "Focused on explainability so non-technical reviewers could understand loan approval decisions; collaborated in a 24-hour sprint to design, code, and pitch a demo."
+            ]
+          },
+          {
+            id: "t9",
+            logo: "assets/t9.jpg",
+            title: "T9 MediHack",
+            date: "Feb 14-15 2025",
+            sortKey: "2025-02-15",
+            lines: [
+              "Developed a cochlear-implant fitting assistant combining audiogram + QuickSIN data with MAP tuning (T/C levels, channel gains).",
+              "Built a clinician dashboard with before/after audibility plots, improving patient monitoring and highlighting actionable insights."
+            ]
+          }
+        ];
 
-  const panel = document.getElementById("communityPanel");
-  panel.innerHTML = panelHTML;
+          /* ===== EVENTS & MEETUPS ===== */
+          const eventsEntries = [
+            {
+              id: "wids-boulder",
+              logo: "assets/wids.png",
+              title: "Women in Data Science (WiDS) - Boulder",
+              date: "Jul 31 2025",
+              lines: [
+                "Met Shannon (Moran) Yates (Head of Data Science, Gusto), Annie Brinza (Data Science Manager, Code for America), and Katie Colasono (Analytics Specialist, GRP).",
+                "Energizing discussions around practical impact and career paths; left with fresh perspective and next steps."
+              ]
+            },
+            {
+              id: "be-involved",
+              logo: "assets/cub.png",
+              title: "Be Involved Fair - CU Boulder",
+              date: "Aug 27 2025",
+              lines: [
+                "Explored clubs to stay engaged beyond coursework: AI Club, Women of Color in STEM, T9Hacks, SWE, HackCU, and CU Women in Computing.",
+                "Plan: Ship small projects with AI Club; Mentor at T9Hacks/HackCU."
+              ]
+            },
+            {
+              id: "startups2students - CU Boulder",
+              logo: "assets/cub.png",
+              title: "Startups2Students",
+              date: "Sep 3 2025",
+              lines: [
+                "Data/AI-leaning teams I spoke with: Rippey AI (conversational AI for logistics), NoSo Labs (AI agents for field technicians), Rivos (RISC-V server chips for AI & analytics).",
+                "Also met: Faex Health, Zooly Labs, Brain Buffs - strong matches for analytics and ML work."
+              ]
+            }
+          ];
 
-  if (withBottomCTA) {
-    const sp  = document.getElementById("scrollPanel");
-    const cta = document.getElementById("bottomCTA");
-    const toggleCTA = () => {
-      const nearBottom = sp.scrollTop + sp.clientHeight >= sp.scrollHeight - 6;
-      cta.classList.toggle("opacity-0", !nearBottom);
-      cta.classList.toggle("translate-y-1", !nearBottom);
-      cta.classList.toggle("opacity-100", nearBottom);
-      cta.classList.toggle("translate-y-0", nearBottom);
-    };
-    toggleCTA();
-    sp.addEventListener("scroll", toggleCTA, { passive: true });
-  }
-}
+          /* ===== WORKSHOPS & SEMINARS ===== */
+          const workshopsEntries = [
+            {
+              id: "ntdas",
+              logo: "assets/ieee.png",
+              title: "National Transportation Data & Analytics Solution (IEEE) Workshop",
+              date: "Aug 14 2025",
+              lines: [
+                "Hands-on with the National Transportation Data & Analytics Solution: mapping, visualization, deep-dive analysis. Led by Lavanya Sayam, Senior Manager of Data Analytics at IEEE.",
+                "Takeaway: free CU-access platform to widen research scope and prototype transport analytics quickly."
+              ]
+            },
+            {
+          id: "lakefusion-mdm",
+          logo: "assets/databricks.png",  
+          title: "Modernizing Master Data Management (MDM) across State and Local Agencies",
+          date: "Sep 9 2025",
+          lines: [
+            "Explored how the AI-powered Databricks MDM solution 'LakeFusion' automates MDM tasks for government agencies and use cases for Person, Legal Entity, and Location domains.",
+            "Topics included: defining MDM, ensuring a single source of truth, automating cleansing, matching, standardization, and maintaining clear data lineage."
+          ]
+        }
+          ];
 
-  /* ===== renderers ===== */
-  function renderHackathons() { renderScrollableList(hackathonEntries); }
-  function renderEvents()    { renderScrollableList(eventsEntries,   { withBottomCTA: true }); }
-  function renderWorkshops() { renderScrollableList(workshopsEntries,{ withBottomCTA: true }); }
+          /* ===== helpers ===== */
+          function initialsFromTitle(t) {
+            const parts = (t || "").split(/\s+/).filter(Boolean);
+            return ((parts[0]?.[0] || "") + (parts.at(-1)?.[0] || "")).toUpperCase();
+          }
 
-  /* ===== tabs hookup ===== */
-  function setActive(btn) {
-    const tabs = document.getElementById("communityTabs");
-    [...tabs.querySelectorAll("button[data-key]")].forEach(b => {
-      b.classList.remove("bg-black","text-white","hover:bg-gray-900");
-      b.classList.add("bg-gray-200","text-gray-800","hover:bg-gray-300");
-    });
-    btn.classList.remove("bg-gray-200","text-gray-800","hover:bg-gray-300");
-    btn.classList.add("bg-black","text-white","hover:bg-gray-900");
-  }
+          /* ===== single card ===== */
+          function listItemHTML(entry) {
+            const logo = entry.logo
+              ? `<img src="${entry.logo}" alt="${entry.title}" class="w-20 h-20 rounded-full object-cover border border-gray-200 shadow-sm bg-white">`
+              : `<div class="w-20 h-20 rounded-full bg-gray-200 text-gray-700 flex items-center justify-center font-semibold border border-gray-200 shadow-sm">${initialsFromTitle(entry.title)}</div>`;
 
-  const tabsEl = document.getElementById("communityTabs");
-  tabsEl.addEventListener("click", (e) => {
-    const btn = e.target.closest("button[data-key]");
-    if (!btn) return;
-    setActive(btn);
-    const key = btn.dataset.key;
-    if (key === "hackathons") renderHackathons();
-    else if (key === "events") renderEvents();
-    else if (key === "workshops") renderWorkshops();
-  });
+            const title = entry.link
+              ? `<a href="${entry.link}" target="_blank" rel="noopener" class="inline-flex items-center hover:underline">
+                  ${entry.title}<span class="ml-1 text-xs opacity-80">↗</span>
+                </a>`
+              : entry.title;
 
-  /* initial render */
-  renderHackathons();
-})();
-</script>
+            const badgesHTML = (entry.badges || []).map((b) => {
+              const cls = /final/i.test(b)
+                ? "bg-green-200 text-green-900 border border-green-400"
+                : "bg-gray-200 text-gray-900 border border-gray-400";
+              return `<span class="px-3 py-1 text-sm font-semibold rounded-full ${cls}">${b}</span>`;
+            }).join("");
+
+            const bullets = (entry.lines || [])
+              .map(l => `<li class="mb-1">${l}</li>`)
+              .join("");
+
+            return `
+              <div class="flex gap-4 p-4 border border-gray-300 rounded-xl bg-white shadow-sm"
+                  style="min-height:150px; font-style:normal !important;">
+                <div class="flex-shrink-0">${logo}</div>
+                <div class="flex-1 text-gray-900" style="font-style:normal !important;">
+                  <div class="flex items-center flex-wrap gap-2">
+                    <h4 class="text-lg font-semibold" style="font-family:'DM Serif Display', serif; font-style:normal !important;">
+                      ${title}
+                    </h4>
+                    ${badgesHTML}
+                  </div>
+                  <div class="text-sm text-gray-700 mt-0.5" style="font-style:normal !important;">${entry.date || ""}</div>
+                  <ul class="mt-2 list-disc pl-5 text-justify leading-relaxed pr-1" style="font-style:normal !important;">
+                    ${bullets}
+                  </ul>
+                </div>
+              </div>
+            `;
+          }
+
+          /* ===== list renderer with optional bottom CTA ===== */
+          function renderScrollableList(entries, opts = {}) {
+          const { withBottomCTA = false, ctaHref = "https://mouks-momentum.hashnode.dev/", ctaText = "Read more on Hashnode" } = opts;
+          const cards = entries.map(listItemHTML).join("");
+
+          const panelHTML = `
+            <div id="scrollPanel"
+                class="bg-white rounded-2xl w-[95%] mx-auto p-6 shadow-md border border-gray-300 overflow-y-auto"
+                style="height:360px; max-height:360px; font-style:normal !important;">
+              <div class="grid grid-cols-1 gap-3" style="font-style:normal !important;">
+                ${cards}
+                ${withBottomCTA ? `
+          <div id="bottomCTA"
+              class="opacity-0 transform translate-y-1 transition-all duration-300 text-center pt-3 pb-1">
+            <a href="${ctaHref}" target="_blank" rel="noopener" aria-label="${ctaText}"
+              class="cta-ghost">
+              <img src="https://cdn.simpleicons.org/hashnode/111827" alt="" aria-hidden="true"
+                  class="w-4 h-4 cta-mark">
+              <span>${ctaText}</span>
+              <i class="fas fa-arrow-right text-xs cta-icon" aria-hidden="true"></i>
+            </a>
+          </div>` : ``}
+              </div>
+            </div>
+          `;
+
+          const panel = document.getElementById("communityPanel");
+          panel.innerHTML = panelHTML;
+
+          if (withBottomCTA) {
+            const sp  = document.getElementById("scrollPanel");
+            const cta = document.getElementById("bottomCTA");
+            const toggleCTA = () => {
+              const nearBottom = sp.scrollTop + sp.clientHeight >= sp.scrollHeight - 6;
+              cta.classList.toggle("opacity-0", !nearBottom);
+              cta.classList.toggle("translate-y-1", !nearBottom);
+              cta.classList.toggle("opacity-100", nearBottom);
+              cta.classList.toggle("translate-y-0", nearBottom);
+            };
+            toggleCTA();
+            sp.addEventListener("scroll", toggleCTA, { passive: true });
+          }
+        }
+
+          /* ===== renderers ===== */
+          function renderHackathons() { renderScrollableList(hackathonEntries); }
+          function renderEvents()    { renderScrollableList(eventsEntries,   { withBottomCTA: true }); }
+          function renderWorkshops() { renderScrollableList(workshopsEntries,{ withBottomCTA: true }); }
+
+          /* ===== tabs hookup ===== */
+          function setActive(btn) {
+            const tabs = document.getElementById("communityTabs");
+            [...tabs.querySelectorAll("button[data-key]")].forEach(b => {
+              b.classList.remove("bg-black","text-white","hover:bg-gray-900");
+              b.classList.add("bg-gray-200","text-gray-800","hover:bg-gray-300");
+            });
+            btn.classList.remove("bg-gray-200","text-gray-800","hover:bg-gray-300");
+            btn.classList.add("bg-black","text-white","hover:bg-gray-900");
+          }
+
+          const tabsEl = document.getElementById("communityTabs");
+          tabsEl.addEventListener("click", (e) => {
+            const btn = e.target.closest("button[data-key]");
+            if (!btn) return;
+            setActive(btn);
+            const key = btn.dataset.key;
+            if (key === "hackathons") renderHackathons();
+            else if (key === "events") renderEvents();
+            else if (key === "workshops") renderWorkshops();
+          });
+
+          /* initial render */
+          renderHackathons();
+        })();
+        </script>
 
 
 
 
 
         <!-- Final CTA / Last Page -->
-<!-- Final CTA / Last Page -->
-<section id="cta" class="full-width bg-white flex items-center justify-center py-28 px-6">
-  <div class="max-w-5xl w-full text-center">
-    
-    <!-- Headline -->
-    <h2 class="text-4xl md:text-5xl font-bold text-black mb-6" style="font-family:'DM Serif Display', serif;">
-      Let’s work together.
-    </h2>
-    <p class="text-gray-700 mb-10 text-lg" style="font-family:'Merriweather', serif;">
-      Focused on adding value to your team and driving results that matter.
-    </p>
+        <section id="cta" class="full-width bg-white flex items-center justify-center py-28 px-6">
+          <div class="max-w-5xl w-full text-center">
+            
+            <!-- Headline -->
+            <h2 class="text-4xl md:text-5xl font-bold text-black mb-6" style="font-family:'DM Serif Display', serif;">
+              Let’s work together.
+            </h2>
+            <p class="text-gray-700 mb-10 text-lg" style="font-family:'Merriweather', serif;">
+              Focused on adding value to your team and driving results that matter.
+            </p>
 
-   <!-- Quick Value (3 bullets) -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-left">
-  <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
-    <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
-      Delivery
-    </h3>
-    <hr class="border-t border-gray-300 mb-2">
-    <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
-      From messy data to decisions: ETL → EDA → models → dashboards, end-to-end.
-    </p>
-  </div>
-  
-  <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
-    <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
-      Clarity
-    </h3>
-    <hr class="border-t border-gray-300 mb-2">
-    <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
-      Story-first reporting so stakeholders know what to do next.
-    </p>
-  </div>
+          <!-- Quick Value (3 bullets) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8 text-left">
+          <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
+            <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
+              Delivery
+            </h3>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
+              From messy data to decisions: ETL → EDA → models → dashboards, end-to-end.
+            </p>
+          </div>
+          
+          <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
+            <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
+              Clarity
+            </h3>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
+              Story-first reporting so stakeholders know what to do next.
+            </p>
+          </div>
 
-  <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
-    <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
-      Ownership
-    </h3>
-    <hr class="border-t border-gray-300 mb-2">
-    <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
-      I care about outcomes post-launch: monitoring, iteration, and real adoption.
-    </p>
-  </div>
-</div>
+          <div class="bg-gray-100 border border-gray-300 rounded-xl p-5">
+            <h3 class="text-xl font-semibold text-gray-900 mb-1" style="font-family:'DM Serif Display', serif;">
+              Ownership
+            </h3>
+            <hr class="border-t border-gray-300 mb-2">
+            <p class="text-sm text-gray-700 leading-relaxed" style="font-family:'Merriweather', serif;">
+              I care about outcomes post-launch: monitoring, iteration, and real adoption.
+            </p>
+          </div>
+        </div>
+
+        <!-- Primary Actions -->
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="assets/Moukthika_Gunapaneedu_Resume.pdf" download
+            class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
+            style="font-family:'Merriweather', serif;">
+            Download Resume
+          </a>
+        </div>
+
+        <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="mailto:moukthikagunapaneedu@gmail.com"
+            class="px-6 py-3 bg-gray-900 text-white rounded-lg shadow-md hover:bg-gray-800 transition"
+            style="font-family:'Merriweather', serif;">
+            moukthikagunapaneedu@gmail.com
+          </a>
+        </div>
 
 
-    
+        <!-- Social mini-row -->
+        <div class="mt-6 flex items-center justify-center gap-6 text-gray-600 text-xl">
+          <!-- GitHub -->
+          <a href="https://github.com/moukthika-gunapaneedu" target="_blank" rel="noopener" class="hover:text-black transition">
+            <i class="fab fa-github"></i>
+          </a>
 
+          <!-- Medium -->
+          <a href="https://medium.com/@moukthikagunapaneedu" target="_blank" rel="noopener" class="hover:text-black transition">
+            <i class="fab fa-medium-m"></i>
+          </a>
 
-    <!-- Primary Actions -->
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="assets/Moukthika_Gunapaneedu_Resume.pdf" download
-         class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transition"
-         style="font-family:'Merriweather', serif;">
-        Download Resume
-      </a>
-    </div>
+          <!-- Hashnode (official icon via Simple Icons CDN) -->
+          <a href="https://mouks-tech-101.hashnode.dev/" target="_blank" rel="noopener" class="transition opacity-80 hover:opacity-100">
+            <img
+              src="https://cdn.simpleicons.org/hashnode/000000"
+              alt="Hashnode"
+              class="w-5 h-5"
+              loading="lazy"
+            />
+          </a>
 
-    <div class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-      <a href="mailto:moukthikagunapaneedu@gmail.com"
-         class="px-6 py-3 bg-gray-900 text-white rounded-lg shadow-md hover:bg-gray-800 transition"
-         style="font-family:'Merriweather', serif;">
-        moukthikagunapaneedu@gmail.com
-      </a>
+          <!-- LinkedIn -->
+          <a href="https://www.linkedin.com/in/moukthika-gunapaneedu-863460215/" target="_blank" rel="noopener" class="hover:text-black transition">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+
+        <!-- Tiny credibility strip -->
+        <div class="mt-10 grid grid-cols-3 gap-6 text-gray-600 text-sm" style="font-family:'Merriweather', serif;">
+          <div class="border-t border-gray-300 pt-3 text-center">
+            <span class="text-black font-semibold">10+ </span>projects shipped
+          </div>
+          <div class="border-t border-gray-300 pt-3 text-center">
+            <span class="text-black font-semibold">2+ yrs </span>hands-on data work
+          </div>
+          <div class="border-t border-gray-300 pt-3 text-center">
+            <span class="text-black font-semibold">3 </span>live dashboards
+          </div>
+        </div>
       </div>
-
-
-      <!-- Social mini-row -->
-<div class="mt-6 flex items-center justify-center gap-6 text-gray-600 text-xl">
-  <!-- GitHub -->
-  <a href="https://github.com/moukthika-gunapaneedu" target="_blank" rel="noopener" class="hover:text-black transition">
-    <i class="fab fa-github"></i>
-  </a>
-
-  <!-- Medium -->
-  <a href="https://medium.com/@moukthikagunapaneedu" target="_blank" rel="noopener" class="hover:text-black transition">
-    <i class="fab fa-medium-m"></i>
-  </a>
-
-  <!-- Hashnode (official icon via Simple Icons CDN) -->
-  <a href="https://mouks-momentum.hashnode.dev/?source=top_nav_blog_home" target="_blank" rel="noopener" class="transition opacity-80 hover:opacity-100">
-    <img
-      src="https://cdn.simpleicons.org/hashnode/000000"
-      alt="Hashnode"
-      class="w-5 h-5"
-      loading="lazy"
-    />
-  </a>
-
-  <!-- LinkedIn -->
-  <a href="https://www.linkedin.com/in/moukthika-gunapaneedu-863460215/" target="_blank" rel="noopener" class="hover:text-black transition">
-    <i class="fab fa-linkedin-in"></i>
-  </a>
-</div>
-
-    <!-- Tiny credibility strip -->
-    <div class="mt-10 grid grid-cols-3 gap-6 text-gray-600 text-sm" style="font-family:'Merriweather', serif;">
-      <div class="border-t border-gray-300 pt-3 text-center">
-        <span class="text-black font-semibold">10+ </span>projects shipped
-      </div>
-      <div class="border-t border-gray-300 pt-3 text-center">
-        <span class="text-black font-semibold">2+ yrs </span>hands-on data work
-      </div>
-      <div class="border-t border-gray-300 pt-3 text-center">
-        <span class="text-black font-semibold">3 </span>live dashboards
-      </div>
-    </div>
-
-
-
-  </div>
-</section>
-
-  </main>
+    </section>
+</main>
 
   <script>
     const roles = [
@@ -1138,34 +1124,34 @@ function closeCoursework() {
 
   let currentProject = 0;
 
-  function renderCard(index) {
-  const p = projects[index];
-  const html = `
-  <div class="bg-white rounded-2xl w-[95%] mx-auto flex flex-col md:flex-row p-6 shadow-xl border border-gray-300 md:h-[350px] md:max-h-[350px] h-auto" style="font-family: 'Merriweather', serif;">
-    <div class="w-full md:w-2/5 md:h-full md:pr-6 mb-4 md:mb-0 overflow-hidden">
-      <img src="${p.img}" alt="${p.title} preview" class="w-full h-full object-cover object-top rounded-lg" />
-    </div>
-    <div class="w-full md:w-3/5 text-gray-800 flex flex-col justify-start">
-      <div>
-        <a href="${p.link}" target="_blank" rel="noopener">
-          <h3 class="text-2xl font-extrabold mb-1 text-black hover:underline" style="font-family: 'DM Serif Display', serif;">
-            ${p.title} <i class="fas fa-external-link-alt ml-1 text-base"></i>
-          </h3>
-        </a>
-        <hr class="border-t border-gray-400 mb-4 w-full">
-        <p class="text-justify mb-3">${p.desc1}</p>
-        <p class="text-justify">${p.desc2}</p>
+    function renderCard(index) {
+    const p = projects[index];
+    const html = `
+    <div class="bg-white rounded-2xl w-[95%] mx-auto flex flex-col md:flex-row p-6 shadow-xl border border-gray-300 md:h-[350px] md:max-h-[350px] h-auto" style="font-family: 'Merriweather', serif;">
+      <div class="w-full md:w-2/5 md:h-full md:pr-6 mb-4 md:mb-0 overflow-hidden">
+        <img src="${p.img}" alt="${p.title} preview" class="w-full h-full object-cover object-top rounded-lg" />
       </div>
-      <div class="mt-4">
-        <a href="${p.readMore}" target="_blank" rel="noopener" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
-          Read More
-        </a>
+      <div class="w-full md:w-3/5 text-gray-800 flex flex-col justify-start">
+        <div>
+          <a href="${p.link}" target="_blank" rel="noopener">
+            <h3 class="text-2xl font-extrabold mb-1 text-black hover:underline" style="font-family: 'DM Serif Display', serif;">
+              ${p.title} <i class="fas fa-external-link-alt ml-1 text-base"></i>
+            </h3>
+          </a>
+          <hr class="border-t border-gray-400 mb-4 w-full">
+          <p class="text-justify mb-3">${p.desc1}</p>
+          <p class="text-justify">${p.desc2}</p>
+        </div>
+        <div class="mt-4">
+          <a href="${p.readMore}" target="_blank" rel="noopener" class="inline-block px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition">
+            Read More
+          </a>
+        </div>
       </div>
     </div>
-  </div>
-  `;
-  document.getElementById("projectCard").innerHTML = html;
-}
+    `;
+    document.getElementById("projectCard").innerHTML = html;
+  }
 
 
   function nextCard() {
@@ -1256,127 +1242,118 @@ function closeCoursework() {
     document.getElementById("jobModal").classList.add("hidden");
   };
 
-function openCommunityModal(key) {
-  const data = communityData[key];
-  document.getElementById("communityTitle").innerText = data.title;
-  document.getElementById("communityImg").src = data.img;
-  document.getElementById("communityDesc").innerHTML = data.desc;
-  document.getElementById("communityModal").classList.remove("hidden");
-}
+  function openCommunityModal(key) {
+    const data = communityData[key];
+    document.getElementById("communityTitle").innerText = data.title;
+    document.getElementById("communityImg").src = data.img;
+    document.getElementById("communityDesc").innerHTML = data.desc;
+    document.getElementById("communityModal").classList.remove("hidden");
+  }
 
-function closeCommunityModal() {
-  document.getElementById("communityModal").classList.add("hidden");
-}
+  function closeCommunityModal() {
+    document.getElementById("communityModal").classList.add("hidden");
+  }
 
-  const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
+    const isDesktop = () => window.matchMedia('(min-width: 768px)').matches;
 
-  window.addEventListener("load", () => {
-    if (!isDesktop()) return;
-    const savedScroll = localStorage.getItem("horizontalScroll");
-    if (savedScroll !== null) {
-      window.scrollTo({ left: parseInt(savedScroll), top: 0, behavior: "instant" });
+    window.addEventListener("load", () => {
+      if (!isDesktop()) return;
+      const savedScroll = localStorage.getItem("horizontalScroll");
+      if (savedScroll !== null) {
+        window.scrollTo({ left: parseInt(savedScroll), top: 0, behavior: "instant" });
+      }
+    });
+
+    window.addEventListener("beforeunload", () => {
+      if (!isDesktop()) return;
+      localStorage.setItem("horizontalScroll", window.scrollX);
+    });
+
+    // Re-evaluate on resize (optional)
+    window.addEventListener('resize', () => {
+      // You could add logic here if you want to snap back to 0 when switching layouts, etc.
+    });
+    
+    function scrollToNext() {
+      if (!isDesktop()) return; // only relevant for horizontal layout
+      const sections = document.querySelectorAll("main section");
+      const scrollX = window.scrollX || window.pageXOffset;
+      const currentIndex = Math.round(scrollX / window.innerWidth);
+      const next = sections[currentIndex + 1];
+      if (next) next.scrollIntoView({ behavior: "smooth", inline: "start" });
     }
-  });
+  </script>
 
-  window.addEventListener("beforeunload", () => {
-    if (!isDesktop()) return;
-    localStorage.setItem("horizontalScroll", window.scrollX);
-  });
+  <!-- Bottom Dock Navigation -->
+  <div id="bottom-nav" 
+      class="fixed bottom-6 inset-x-0 mx-auto w-max px-6 py-3 bg-white/80 backdrop-blur-md 
+              rounded-2xl shadow-lg flex gap-8 items-center text-gray-700 
+              opacity-0 translate-y-5 transition-all duration-500 ease-in-out z-50">
+    
+  <a href="#intro" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Intro">
+    <i class="fas fa-user"></i>
+  </a>
+  <a href="#projects" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Projects">
+    <i class="fas fa-folder-open"></i>
+  </a>
+  <a href="#tools" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Skills">
+    <i class="fas fa-wrench"></i>
+  </a>
+  <a href="#story" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Timeline">
+    <i class="fas fa-history"></i>
+  </a>
+  <a href="#learning" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Learning">
+    <i class="fas fa-book-open"></i>
+  </a>
+  <a href="#community" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Growth">
+    <i class="fas fa-users"></i>
+  </a>
+  <a href="#cta" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Contact">
+    <i class="fas fa-envelope"></i>
+  </a>
 
-  // Re-evaluate on resize (optional)
-  window.addEventListener('resize', () => {
-    // You could add logic here if you want to snap back to 0 when switching layouts, etc.
-  });
-  
-  function scrollToNext() {
-    if (!isDesktop()) return; // only relevant for horizontal layout
-    const sections = document.querySelectorAll("main section");
-    const scrollX = window.scrollX || window.pageXOffset;
-    const currentIndex = Math.round(scrollX / window.innerWidth);
-    const next = sections[currentIndex + 1];
-    if (next) next.scrollIntoView({ behavior: "smooth", inline: "start" });
-  }
-</script>
+  </div>
 
-<!-- Bottom Dock Navigation -->
-<div id="bottom-nav" 
-     class="fixed bottom-6 inset-x-0 mx-auto w-max px-6 py-3 bg-white/80 backdrop-blur-md 
-            rounded-2xl shadow-lg flex gap-8 items-center text-gray-700 
-            opacity-0 translate-y-5 transition-all duration-500 ease-in-out z-50">
-  
-<a href="#intro" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Intro">
-  <i class="fas fa-user"></i>
-</a>
-<a href="#projects" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Projects">
-  <i class="fas fa-folder-open"></i>
-</a>
-<a href="#tools" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Skills">
-  <i class="fas fa-wrench"></i>
-</a>
-<a href="#story" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Timeline">
-  <i class="fas fa-history"></i>
-</a>
-<a href="#learning" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Learning">
-  <i class="fas fa-book-open"></i>
-</a>
-<a href="#community" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Growth">
-  <i class="fas fa-users"></i>
-</a>
-<a href="#cta" class="hover:text-black transform transition-transform duration-300 hover:scale-125" title="Contact">
-  <i class="fas fa-envelope"></i>
-</a>
+  <script>
+    (() => {
+      const bottomNav = document.getElementById('bottom-nav');
+      const landingSection = document.querySelector('main > section'); // first section
+      let leftLanding = false;
 
-</div>
+      const show = () => bottomNav.classList.remove('opacity-0','translate-y-5');
+      const hide = () => bottomNav.classList.add('opacity-0','translate-y-5');
 
-<script>
-(() => {
-  const bottomNav = document.getElementById('bottom-nav');
-  const landingSection = document.querySelector('main > section'); // first section
-  let leftLanding = false;
+      window.addEventListener('load', () => {
+        setTimeout(show, 3000); // sync with your arrow reveal
+      });
 
-  const show = () => bottomNav.classList.remove('opacity-0','translate-y-5');
-  const hide = () => bottomNav.classList.add('opacity-0','translate-y-5');
-
-  // 1) Show a beat after the arrow appears on page load (arrow shows ~1.6s in)
-  window.addEventListener('load', () => {
-    setTimeout(show, 3000); // sync with your arrow reveal
-  });
-
-  // 2) As soon as we leave the first screen, hide and switch to hover-to-show
-  if ('IntersectionObserver' in window && landingSection) {
-    const io = new IntersectionObserver((entries) => {
-      const e = entries[0];
-      if (!leftLanding && e.intersectionRatio < 0.8) {
-        leftLanding = true;
-        hide();
-        io.disconnect();
+      if ('IntersectionObserver' in window && landingSection) {
+        const io = new IntersectionObserver((entries) => {
+          const e = entries[0];
+          if (!leftLanding && e.intersectionRatio < 0.8) {
+            leftLanding = true;
+            hide();
+            io.disconnect();
+          }
+        }, { threshold: [0, 0.8] });
+        io.observe(landingSection);
+      } else {
+        // Fallback: first non-trivial scroll
+        const onScroll = () => {
+          if (!leftLanding && (window.scrollX > 5 || window.scrollY > 5)) {
+            leftLanding = true;
+            hide();
+            window.removeEventListener('scroll', onScroll);
+          }
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
       }
-    }, { threshold: [0, 0.8] });
-    io.observe(landingSection);
-  } else {
-    // Fallback: first non-trivial scroll
-    const onScroll = () => {
-      if (!leftLanding && (window.scrollX > 5 || window.scrollY > 5)) {
-        leftLanding = true;
-        hide();
-        window.removeEventListener('scroll', onScroll);
-      }
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  // 3) After leaving landing, only show when cursor is near the bottom edge
-  document.addEventListener('mousemove', (e) => {
-    if (!leftLanding) return; // keep it shown on landing
-    const nearBottom = (window.innerHeight - e.clientY) < 120;
-    nearBottom ? show() : hide();
-  });
-})();
-</script>
-
-
-
-
+      document.addEventListener('mousemove', (e) => {
+        if (!leftLanding) return; // keep it shown on landing
+        const nearBottom = (window.innerHeight - e.clientY) < 120;
+        nearBottom ? show() : hide();
+      });
+    })();
+  </script>
 </body>
-
 </html>
