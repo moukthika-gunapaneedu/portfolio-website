@@ -468,7 +468,7 @@
         <!-- Timeline with Arrows -->
         <div class="timeline-wrap">
           <div class="timeline-scroll w-full mt-10">
-          <div class="timeline-row flex items-center justify-center gap-10 px-18" style="min-width:1600px;">
+          <div class="timeline-row flex items-center justify-center gap-10 px-18" style="min-width:1900px;">
 
             <!-- MedTourEasy -->
             <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
@@ -545,6 +545,22 @@
               </div>
               <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Engineer</div>
               <div class="text-sm italic text-gray-700">CU Boulder Libraries</div>
+            </div>
+
+            <!-- Arrow -->
+            <div class="text-gray-400 text-3xl -mt-8"><i class="fas fa-arrow-right"></i></div>
+
+            <!-- Parsyl -->
+            <div class="timeline-item flex flex-col items-center text-center group cursor-pointer"
+                role="button" tabindex="0" aria-label="Open Data Science Intern at Parsyl"
+                onclick="openModal('PARSYL')"
+                onkeydown="if(event.key==='Enter'||event.key===' '){openModal('PARSYL');}">
+              <div class="timeline-dot w-28 h-28 rounded-full border-4 border-gray-300 bg-white 
+                          flex items-center justify-center shadow-lg mb-3">
+                <img src="assets/parsyl.png" alt="Parsyl" class="h-12 object-contain" loading="lazy" />
+              </div>
+              <div class="text-lg font-bold" style="font-family: 'DM Serif Display', serif;">Data Science Intern</div>
+              <div class="text-sm italic text-gray-700">Parsyl</div>
             </div>
           </div>
           </div>
@@ -1228,7 +1244,8 @@
       MTE: "Data Analyst",
       SSS: "Data Scientist",
       ZENOYA: "Database Intern",
-      CU: "Data Engineer - Metadata"
+      CU: "Data Engineer - Metadata",
+      PARSYL: "Data Science Intern"
     };
 
     const subtitles = {
@@ -1236,7 +1253,8 @@
       MTE: "MedTourEasy",
       SSS: "Solar Secure Solutions",
       ZENOYA: "Studio Zenoya",
-      CU: "University of Colorado Boulder - Libraries"
+      CU: "University of Colorado Boulder - Libraries",
+      PARSYL: "Parsyl"
     };
 
     
@@ -1275,6 +1293,12 @@
       <p class="mb-2">Automated metadata extraction from 3,500+ high-resolution TIFF archival files by integrating Python pipelines with OCR (Tesseract), ensuring accurate and scalable digitization of historical tsunami marigrams.</p>
       <p class="mb-2">Built and deployed a deduplication system leveraging hashing and pattern-matching techniques to identify and remove redundant archival data, improving cataloging efficiency by 30% and reducing storage overhead.</p>
       <p>Structured, normalized, and cleaned complex datasets using SQL and Python, creating a reliable metadata framework that supports long-term digital preservation and global research access.</p>
+    `,
+    PARSYL: `
+      <span class="text-sm text-gray-600 block mb-3">Dec 2025 - Present</span>
+      <p class="mb-2">Built automation and data workflows to support claims operations, improving turnaround time and reducing manual follow-ups across high-volume cases.</p>
+      <p class="mb-2">Designed lightweight validation and enrichment steps for incoming claim and policy artifacts to improve traceability and downstream reporting quality.</p>
+      <p>Partnered with operations and engineering to translate recurring process bottlenecks into measurable, repeatable improvements.</p>
     `
   };
 
