@@ -1167,7 +1167,31 @@
 
     const projects = [
     {
-      title: "Research Pod",
+      title: "BoxBox",
+      desc1: "Built an F1 race prediction platform for the 2026 season using a 3-model ensemble architecture combining XGBoost and LightGBM models trained on 5 years of historical race data. It uses time-series cross-validation to prevent data leakage and applied heavier weighting to 2026 races to account for new F1 regulations and evolving team performance patterns.",
+      desc2: "Developed a real-time data pipeline integrating OpenF1, Jolpica/Ergast, and Open-Meteo APIs to process live lap times, qualifying sessions, sprint data, and weather forecasts. Engineered 18 driver-level performance features and deployed a Next.js dashboard displaying win probabilities, podium predictions, confidence levels, and key race factors.",
+      img: "assets/boxbox.png",
+      link: "https://moukthika-gunapaneedu.github.io/box-box/",
+      readMore: "https://github.com/moukthika-gunapaneedu/box-box"
+    },
+    {
+      title: "EcoSort",
+      desc1: "Built EcoSort, an image-based waste classification system trained on a 2,500-image dataset to identify and separate waste materials through computer vision. The platform was designed to improve sorting efficiency while handling real-world waste variations across multiple material categories.",
+      desc2: "Developed and evaluated deep learning models achieving ~96% classification accuracy, while analyzing confusion matrices and misclassification trends to identify visually similar material pairs. Refined the prediction pipeline to improve sorting clarity and reduce high-error classification cases in real-world scenarios.",
+      img: "assets/ecosort.png",
+      link: "https://moukthika-gunapaneedu.github.io/EcoSort/",
+      readMore: "https://github.com/moukthika-gunapaneedu/EcoSort"
+    },
+    {
+    title: "WaveSource",
+    desc1: "This project focuses on digitizing and structuring historical tsunami marigrams stored as high-resolution TIFF images. Using Python, Tesseract OCR, and OpenCV, it extracts key metadata such as station name, location, date, event ID, and scale values, converting previously unstructured data into searchable CSV and JSON formats.",
+    desc2: "Beyond text extraction, the system incorporates perceptual-hash deduplication to eliminate redundant images and normalizes date and location fields for consistency. These pipelines were built to support CU Boulder Libraries and NOAA’s archival workflows, making rare historical data accessible to the global research community.",
+    img: "assets/tsunami.png",
+    link: "https://github.com/moukthika-gunapaneedu/Tsunami-Marigram-Metadata-Extractor",
+    readMore: "https://github.com/moukthika-gunapaneedu/Tsunami-Marigram-Metadata-Extractor"
+    },
+    {
+      title: "ResearchPod",
       desc1: "In a team project to streamline access to academic insights, we built a distributed system that processes arXiv papers and returns audio summaries using Retrieval-Augmented Generation. The goal was to help researchers discover relevant work faster through AI-generated transcripts and voice outputs.",
       desc2: "I contributed to the recommendation system that suggests similar research pods by leveraging vector similarity from transcript embeddings. This involved tuning pgvector queries and refining the transcript storage pipeline to improve content-matching accuracy across a growing corpus.",
       img: "assets/researchpod.png",
@@ -1175,7 +1199,7 @@
       readMore: "https://github.com/richardr1126/research-pod-api"
     },
       {
-      title: "Bank Marketing Campaign Analysis",
+      title: "BankIntel",
       desc1: "This project investigates a Portuguese bank’s direct marketing campaign aimed at encouraging term deposit subscriptions. The focus was on identifying behavioral and demographic patterns through a machine learning approach, leveraging both statistical analysis and data storytelling techniques.",
       desc2: "I developed an interactive website that presents machine learning insights and clustering results. The site features models like SVM, decision trees, and PCA-based customer segmentation, built entirely with HTML, Tailwind CSS, and hosted via GitHub Pages.",
       img: "assets/bankintel.png",
@@ -1189,16 +1213,6 @@
     img: "assets/doctorvisits.png",
     link: "https://github.com/moukthika-gunapaneedu/doctor-visits-analysis",
     readMore: "https://github.com/moukthika-gunapaneedu/doctor-visits-analysis/blob/main/DoctorVisits_Analysis.ipynb"
-  },
-   {
-    title: "Tsunami Marigram Extractor",
-    desc1:
-      "This project focuses on digitizing and structuring historical tsunami marigrams stored as high-resolution TIFF images. Using Python, Tesseract OCR, and OpenCV, it extracts key metadata such as station name, location, date, event ID, and scale values, converting previously unstructured data into searchable CSV and JSON formats.",
-    desc2:
-      "Beyond text extraction, the system incorporates perceptual-hash deduplication to eliminate redundant images and normalizes date and location fields for consistency. These pipelines were built to support CU Boulder Libraries and NOAA’s archival workflows, making rare historical data accessible to the global research community.",
-    img: "assets/tsunami.png",
-    link: "https://github.com/moukthika-gunapaneedu/Tsunami-Marigram-Metadata-Extractor",
-    readMore: "https://github.com/moukthika-gunapaneedu/Tsunami-Marigram-Metadata-Extractor"
   }
   ];
 
